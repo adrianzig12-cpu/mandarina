@@ -1,3 +1,6 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Mandarina · la app de tu estudio</title>
 <style>
   :root{
@@ -233,8 +236,9 @@
   @media(max-width:520px){.pains{grid-template-columns:1fr}}
 
   /* tour / recorrido guiado */
-  .tour .wrap{display:grid;grid-template-columns:1fr 1.05fr;gap:56px;align-items:center}
-  .guide{background:#fff;border:1px solid #F0DEC9;border-radius:20px;padding:26px 26px 22px;
+  .tour .wrap{display:grid;grid-template-columns:1fr 1.05fr;column-gap:56px;align-items:start;grid-template-areas:"copy phone" "guide phone"}
+  .tour-copy{grid-area:copy}
+  .guide{grid-area:guide;background:#fff;border:1px solid #F0DEC9;border-radius:20px;padding:26px 26px 22px;
     box-shadow:0 12px 34px rgba(58,36,22,.08);margin-top:26px}
   .g-count{font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--rose-deep);font-weight:700}
   .g-title{font-family:var(--serif);font-style:italic;font-size:1.7rem;margin:8px 0 10px;color:var(--ink)}
@@ -251,10 +255,17 @@
   .g-next:hover{transform:translateY(-2px)}
   .g-free{margin-top:14px;font-size:.76rem;color:var(--ink-faint);text-align:center}
   .g-free b{color:var(--rose-deep)}
-  .tour-phone{display:flex;justify-content:center}
+  .tour-phone{grid-area:phone;align-self:center;display:flex;justify-content:center}
   @media(max-width:900px){
-    .tour .wrap{grid-template-columns:1fr;gap:30px}
-    .tour-phone{order:-1}
+    .tour .wrap{grid-template-columns:1fr;grid-template-areas:"copy" "phone" "guide";row-gap:0}
+    .tour-phone{margin:18px 0}
+    .guide{position:sticky;bottom:10px;margin-top:14px;padding:18px 20px 16px;box-shadow:0 -6px 26px rgba(58,36,22,.20)}
+    .g-title{font-size:1.3rem;margin:6px 0 8px}
+    .g-narr{font-size:.92rem;min-height:0}
+    .g-dots{margin:12px 0 12px}
+    .g-free{display:none}
+    .phone{width:290px;flex-basis:290px}
+    .screen{height:520px}
   }
 
   .vgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:52px}
@@ -413,17 +424,6 @@
       <div class="eyebrow kicker">Recorrido guiado</div>
       <h2 class="big serif">Así se ve <em>un día completo</em> adentro.</h2>
       <p class="sub" style="margin-top:14px">Todo esto ya existe y corre en un estudio real. Dale <b>Siguiente</b> y te llevo paso a paso.</p>
-      <div class="guide">
-        <div class="g-count" id="g-count">Paso 1 de 8</div>
-        <div class="g-title" id="g-title">Tu día, de un vistazo</div>
-        <p class="g-narr" id="g-narr">Abres Mandarina y ahí está el día completo: cada técnica en su columna, con su color y su horario. Sin cuaderno, sin adivinar quién atiende a quién.</p>
-        <div class="g-dots" id="g-dots"></div>
-        <div class="g-ctrl">
-          <button class="btn g-prev" id="g-prev" onclick="tourStep(cur-1)">← Anterior</button>
-          <button class="btn g-next" id="g-next" onclick="tourNext()">Siguiente →</button>
-        </div>
-        <div class="g-free">o explórala libre con la <b>barra de abajo</b> del teléfono 👇</div>
-      </div>
     </div>
 
     <div class="tour-phone">
@@ -573,6 +573,18 @@
 
         </div>
       </div>
+    </div>
+
+    <div class="guide">
+      <div class="g-count" id="g-count">Paso 1 de 8</div>
+      <div class="g-title" id="g-title">Tu día, de un vistazo</div>
+      <p class="g-narr" id="g-narr">Abres Mandarina y ahí está el día completo: cada técnica en su columna, con su color y su horario. Sin cuaderno, sin adivinar quién atiende a quién.</p>
+      <div class="g-dots" id="g-dots"></div>
+      <div class="g-ctrl">
+        <button class="btn g-prev" id="g-prev" onclick="tourStep(cur-1,true)">← Anterior</button>
+        <button class="btn g-next" id="g-next" onclick="tourNext()">Siguiente →</button>
+      </div>
+      <div class="g-free">o explórala libre con la <b>barra de abajo</b> del teléfono 👇</div>
     </div>
   </div>
 </section>
@@ -741,7 +753,7 @@
     var d=document.getElementById('g-dots'); d.innerHTML='';
     for(var i=0;i<TOUR.length;i++){ var el=document.createElement('i'); if(i===cur) el.className='on'; d.appendChild(el); }
   }
-  function tourStep(i){
+  function tourStep(i, scroll){
     if(i<0||i>=TOUR.length) return;
     cur=i; var st=TOUR[i];
     clearSpot(); setScreen(st.s);
@@ -755,10 +767,15 @@
     nx.textContent=(i===TOUR.length-1)?'Agenda tu demo →':'Siguiente →';
     var dots=document.querySelectorAll('#g-dots i');
     dots.forEach(function(x,ix){ x.className=(ix===cur)?'on':''; });
+    // en móvil, centra el teléfono para que se vea el cambio al tocar Siguiente/Anterior
+    if(scroll && window.matchMedia('(max-width:900px)').matches){
+      var ph=document.querySelector('.tour-phone');
+      if(ph) ph.scrollIntoView({behavior:'smooth',block:'start'});
+    }
   }
   function tourNext(){
     if(cur===TOUR.length-1){ document.getElementById('demo').scrollIntoView({behavior:'smooth'}); return; }
-    tourStep(cur+1);
+    tourStep(cur+1, true);
   }
   function startTour(){
     document.getElementById('tour').scrollIntoView({behavior:'smooth'});
