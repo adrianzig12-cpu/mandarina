@@ -668,7 +668,7 @@
       <p class="sub">Tú eliges el nombre, el logo y la paleta. Nosotros la dejamos lista para que tus clientas la sientan tuya.</p>
     </div>
     <div class="brandgrid">
-      <div class="bcard" style="--acc:#EE7A21;--acc2:#F79A4D">
+      <div class="bcard" style="--acc:#EE7A21;--acc2:#F79A4D;cursor:pointer" onclick="setBrand('#EE7A21','#F79A4D','#F2B33C')">
         <div class="mphone"><div class="mscreen">
           <div class="mhead"><span class="bdot"></span> 🍊 Mandarina</div>
           <div class="mbar a">Emily · Volumen Ruso</div>
@@ -679,7 +679,7 @@
         <div class="bname">Mandarina</div>
         <div class="btag">el original 🍊</div>
       </div>
-      <div class="bcard" style="--acc:#D6608A;--acc2:#E88BAC">
+      <div class="bcard" style="--acc:#D6608A;--acc2:#E88BAC;cursor:pointer" onclick="setBrand('#D6608A','#E88BAC','#E8A6C0')">
         <div class="mphone"><div class="mscreen">
           <div class="mhead"><span class="bdot"></span> Bella Lash</div>
           <div class="mbar a">Ana · Pestañas</div>
@@ -690,7 +690,7 @@
         <div class="bname">Bella Lash</div>
         <div class="btag">estudio de pestañas</div>
       </div>
-      <div class="bcard" style="--acc:#7E5BD0;--acc2:#A487E0">
+      <div class="bcard" style="--acc:#7E5BD0;--acc2:#A487E0;cursor:pointer" onclick="setBrand('#7E5BD0','#A487E0','#BBA0E8')">
         <div class="mphone"><div class="mscreen">
           <div class="mhead"><span class="bdot"></span> Studio Aura</div>
           <div class="mbar a">Vale · Acrílicas</div>
@@ -702,7 +702,7 @@
         <div class="btag">uñas & spa</div>
       </div>
     </div>
-    <p class="brand-note">Mismo motor, misma potencia — <b>vestida con tu marca.</b></p>
+    <p class="brand-note">👆 Toca una marca para ver <b>la página en esos colores</b>. Mismo motor, vestida con la tuya. <button onclick="setBrand('#EE7A21','#F79A4D','#F2B33C')" style="background:none;border:none;color:var(--rose-deep);font-weight:700;cursor:pointer;font-size:inherit;font-family:inherit">↺ Volver a Mandarina</button></p>
   </div>
 </section>
 
@@ -867,5 +867,10 @@
     document.getElementById('tour').scrollIntoView({behavior:'smooth'});
     tourStep(0);
   }
+  function setBrand(deep,light,gold){
+    var r=document.documentElement.style;
+    r.setProperty('--rose-deep',deep);r.setProperty('--rose',light);r.setProperty('--gold',gold);
+  }
+  window.setBrand=setBrand;
   buildDots(); tourStep(0);
 </script>
