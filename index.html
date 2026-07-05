@@ -111,7 +111,7 @@
   .a-blue{background:linear-gradient(155deg,#6FB6D8,#4E9BC4)}
   .a-gold{background:linear-gradient(155deg,#F2C265,#DDA33A);color:#4A3312}
   .a-gold .who{color:#4A3312}
-  .a-tang{background:linear-gradient(155deg,#F79A4D,#EE7A21)}
+  .a-tang{background:linear-gradient(155deg,var(--rose),var(--rose-deep))}
   .a-green{background:linear-gradient(155deg,#4E9E52,#2E7D32)}
   .cam{background:rgba(255,255,255,.28);border-radius:5px;font-size:.6rem;padding:0 3px}
 
@@ -302,6 +302,12 @@
     line-height:1.3;color:var(--ink)}
   .origin blockquote span{color:var(--rose-deep)}
   .origin .by{margin-top:22px;font-size:.9rem;color:var(--ink-soft)}
+  .quote-by{margin-top:26px;display:flex;align-items:center;gap:14px}
+  .qav{width:52px;height:52px;border-radius:50%;flex:0 0 auto;display:flex;align-items:center;justify-content:center;
+    font-family:var(--serif);font-style:italic;font-size:1.5rem;color:#fff;background:linear-gradient(150deg,var(--rose),var(--rose-deep))}
+  .qwho{font-size:.98rem;color:var(--ink);line-height:1.35}
+  .qwho strong{color:var(--ink)}
+  .qsub{font-size:.82rem;color:var(--ink-soft)}
   .facts{display:grid;grid-template-columns:1fr 1fr;gap:14px}
   .fact{background:#fff;border:1px solid #F1E5D8;border-radius:16px;padding:22px 20px}
   .fact .fn{font-family:var(--serif);font-style:italic;font-size:2rem;color:var(--rose-deep)}
@@ -332,10 +338,33 @@
 
   /* Con tu marca (personalización) */
   .brandsec{background:linear-gradient(180deg,var(--cream),#fff)}
-  .brandgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin:48px auto 0;max-width:840px}
-  .bcard{background:#fff;border:1px solid #F0E3D8;border-radius:22px;padding:24px 18px;text-align:center;
-    box-shadow:0 6px 20px rgba(58,36,22,.06)}
-  .mphone{width:154px;height:236px;margin:0 auto;border-radius:26px;background:#1c1109;padding:8px;
+  /* Carrusel 3D (coverflow) — mismo en escritorio y móvil */
+  .brandgrid{position:relative;height:470px;max-width:1000px;margin:40px auto 0;perspective:1500px;overflow:hidden}
+  .bcard{position:absolute;top:12px;left:50%;width:212px;
+    background:#fff;border:1px solid #F0E3D8;border-radius:22px;padding:20px 14px;text-align:center;
+    box-shadow:0 16px 44px rgba(58,36,22,.16);transform-origin:center center;backface-visibility:hidden;
+    transition:transform .5s cubic-bezier(.2,.72,.2,1),opacity .5s}
+  .cfarrow{position:absolute;top:46%;transform:translateY(-50%);z-index:200;width:52px;height:52px;border-radius:50%;
+    border:1px solid #EAD9C9;background:rgba(255,255,255,.94);color:var(--rose-deep);font-size:1.5rem;line-height:1;
+    cursor:pointer;box-shadow:0 6px 18px rgba(58,36,22,.14);display:flex;align-items:center;justify-content:center;transition:.2s}
+  .cfarrow:hover{background:var(--rose-deep);color:#fff;border-color:var(--rose-deep)}
+  .cfarrow.l{left:8px}.cfarrow.r{right:8px}
+  .cfdots{display:flex;justify-content:center;gap:10px;margin:8px 0 0}
+  .cfdot{width:10px;height:10px;border-radius:50%;border:none;padding:0;background:#E3D3C4;cursor:pointer;transition:.2s}
+  .cfdot.on{background:var(--rose-deep);transform:scale(1.3)}
+  .cfhint{text-align:center;margin:16px 0 0;font-size:.85rem;color:var(--ink-soft)}
+  .reassure{text-align:center;margin:18px auto 0;font-size:.9rem;color:var(--ink-soft);font-weight:600}
+  /* Barra CTA fija en móvil */
+  .mcta{display:none}
+  @media(max-width:760px){
+    body{padding-bottom:76px}
+    .mcta{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:120;gap:10px;padding:11px 14px calc(11px + env(safe-area-inset-bottom));
+      background:rgba(36,24,18,.92);backdrop-filter:blur(10px);border-top:1px solid rgba(255,255,255,.12)}
+    .mcta a{flex:1;text-align:center;border-radius:999px;padding:13px 10px;font-weight:700;font-size:.92rem;text-decoration:none}
+    .mcta .m-wa{background:var(--rose-deep);color:#fff}
+    .mcta .m-app{background:transparent;color:#F3E7DB;border:1px solid rgba(255,255,255,.28)}
+  }
+  .mphone{width:130px;height:200px;margin:0 auto;border-radius:24px;background:#1c1109;padding:7px;
     box-shadow:0 12px 26px rgba(0,0,0,.22)}
   .mscreen{background:var(--cream);border-radius:20px;height:100%;padding:11px 9px;display:flex;flex-direction:column;gap:6px}
   .mhead{font-family:var(--serif);font-style:italic;font-size:.82rem;color:var(--acc);display:flex;
@@ -350,7 +379,12 @@
   .btag{font-size:.74rem;color:var(--ink-soft);margin-top:2px}
   .brand-note{text-align:center;margin-top:34px;font-size:.95rem;color:var(--ink-soft)}
   .brand-note b{color:var(--rose-deep)}
-  @media(max-width:760px){.brandgrid{grid-template-columns:1fr;max-width:300px;gap:18px}}
+  @media(max-width:760px){
+    .brandgrid{height:436px;max-width:none;perspective:1100px;margin:34px 0 0}
+    .bcard{width:190px;top:8px}
+    .cfarrow{width:42px;height:42px;font-size:1.2rem}
+    .cfarrow.l{left:2px}.cfarrow.r{right:2px}
+  }
 
   @media(prefers-reduced-motion:reduce){
     *{transition:none!important;animation:none!important}
@@ -380,9 +414,8 @@
       <h1 class="serif">Tu agenda, tus cobros y tus clientas <em>en un solo lugar</em>, desde el celular.</h1>
       <p class="lede">Con Mandarina, un estudio real administra su día completo desde el celular. La misma app puede llevar el nombre y los colores del tuyo.</p>
       <div class="hero-cta">
-        <button class="btn btn-rose" onclick="startTour()">▶ Ver recorrido guiado</button>
-        <a class="btn btn-ghost" target="_blank" rel="noopener"
-           href="https://wa.me/525545450644?text=Hola%2C%20quiero%20una%20demo%20de%20Mandarina%20para%20mi%20estudio">Escríbeme por WhatsApp</a>
+        <a class="btn btn-rose" href="/app/" target="_blank" rel="noopener">🔎 Pruébala en vivo</a>
+        <button class="btn btn-ghost" onclick="startTour()">▶ Ver recorrido guiado</button>
       </div>
       <div class="trust">
         <span><span class="dot"></span> Corre en tu celular</span>
@@ -450,6 +483,75 @@
       <div class="pain"><div class="n">04</div><h3>Tu asistente ve todo</h3>
         <p>Quien te ayuda a agendar termina viendo teléfonos, cobros y números que no le tocan.</p></div>
     </div>
+  </div>
+</section>
+
+<!-- CON TU MARCA -->
+<section id="marca" class="brandsec pad">
+  <div class="wrap">
+    <div class="center">
+      <div class="eyebrow kicker">Con la marca de tu estudio</div>
+      <h2 class="big serif">Primero, vístela con el <em>diseño de tu estudio.</em></h2>
+      <p class="sub">Elige la identidad de tu estudio y mira la página entera tomar ese color. El que elijas <b>te acompaña en el recorrido de aquí abajo</b> —así vas a ver tu día a día, ya con tus colores.</p>
+    </div>
+    <div class="brandgrid">
+      <div class="bcard" style="--acc:#EE7A21;--acc2:#F79A4D;cursor:pointer" onclick="setBrand('#EE7A21','#F79A4D','#F2B33C')">
+        <div class="mphone"><div class="mscreen">
+          <div class="mhead"><span class="bdot"></span> 🍊 Mandarina</div>
+          <div class="mbar a">Emily · Volumen Ruso</div>
+          <div class="mbar b">Regina · Híbrida</div>
+          <div class="mbar al">Ale · Cola de Sirena</div>
+          <div class="mbar g">Dani · Retoque</div>
+        </div></div>
+        <div class="bname">Mandarina</div>
+        <div class="btag">el original 🍊</div>
+      </div>
+      <div class="bcard" style="--acc:#C95F85;--acc2:#EF8BAE;cursor:pointer" onclick="setBrand('#C95F85','#EF8BAE','#F2A7C0')">
+        <div class="mphone"><div class="mscreen">
+          <div class="mhead"><span class="bdot"></span> 🌷 Rosa clásico</div>
+          <div class="mbar a">Emily · Volumen Ruso</div>
+          <div class="mbar b">Regina · Clásicas</div>
+          <div class="mbar al">Ale · Lifting</div>
+          <div class="mbar g">Dani · Retoque</div>
+        </div></div>
+        <div class="bname">Rosa clásico</div>
+        <div class="btag">estilo pestañas 🌷</div>
+      </div>
+      <div class="bcard" style="--acc:#DB2E77;--acc2:#EC6AA3;cursor:pointer" onclick="setBrand('#DB2E77','#EC6AA3','#F49CC1')">
+        <div class="mphone"><div class="mscreen">
+          <div class="mhead"><span class="bdot"></span> 🌸 Bella Lash</div>
+          <div class="mbar a">Ana · Pestañas</div>
+          <div class="mbar b">Sofía · Lifting</div>
+          <div class="mbar al">Meli · Volumen</div>
+          <div class="mbar g">Karla · Retoque</div>
+        </div></div>
+        <div class="bname">Bella Lash</div>
+        <div class="btag">pestañas 🌸</div>
+      </div>
+      <div class="bcard" style="--acc:#7E5BD0;--acc2:#A487E0;cursor:pointer" onclick="setBrand('#7E5BD0','#A487E0','#BBA6E8')">
+        <div class="mphone"><div class="mscreen">
+          <div class="mhead"><span class="bdot"></span> 💜 Studio Aura</div>
+          <div class="mbar a">Vale · Acrílicas</div>
+          <div class="mbar b">Fer · Gelish</div>
+          <div class="mbar al">Pau · Diseño</div>
+          <div class="mbar g">Ivon · Rellenado</div>
+        </div></div>
+        <div class="bname">Studio Aura</div>
+        <div class="btag">uñas & spa 💜</div>
+      </div>
+      <div class="bcard" style="--acc:#2E9E9E;--acc2:#56BEBE;cursor:pointer" onclick="setBrand('#2E9E9E','#56BEBE','#86D2D2')">
+        <div class="mphone"><div class="mscreen">
+          <div class="mhead"><span class="bdot"></span> 🌿 Glow Studio</div>
+          <div class="mbar a">Sam · Cejas</div>
+          <div class="mbar b">Nadia · Henna</div>
+          <div class="mbar al">Lu · Laminado</div>
+          <div class="mbar g">Cami · Depilación</div>
+        </div></div>
+        <div class="bname">Glow Studio</div>
+        <div class="btag">cejas & skin 🌿</div>
+      </div>
+    </div>
+    <p class="brand-note"><button onclick="(window.cfHome?cfHome():setBrand('#EE7A21','#F79A4D','#F2B33C'))" style="background:none;border:none;color:var(--rose-deep);font-weight:700;cursor:pointer;font-size:inherit;font-family:inherit">↺ Volver a Mandarina</button></p>
   </div>
 </section>
 
@@ -664,53 +766,6 @@
   </div>
 </section>
 
-<!-- CON TU MARCA -->
-<section id="marca" class="brandsec pad">
-  <div class="wrap">
-    <div class="center">
-      <div class="eyebrow kicker">Con la marca de tu estudio</div>
-      <h2 class="big serif">La misma app, con <em>tu nombre y tus colores.</em></h2>
-      <p class="sub">Tú eliges el nombre, el logo y la paleta. Nosotros la dejamos lista para que tus clientas la sientan tuya.</p>
-    </div>
-    <div class="brandgrid">
-      <div class="bcard" style="--acc:#EE7A21;--acc2:#F79A4D;cursor:pointer" onclick="setBrand('#EE7A21','#F79A4D','#F2B33C')">
-        <div class="mphone"><div class="mscreen">
-          <div class="mhead"><span class="bdot"></span> 🍊 Mandarina</div>
-          <div class="mbar a">Emily · Volumen Ruso</div>
-          <div class="mbar b">Regina · Híbrida</div>
-          <div class="mbar al">Ale · Cola de Sirena</div>
-          <div class="mbar g">Dani · Retoque</div>
-        </div></div>
-        <div class="bname">Mandarina</div>
-        <div class="btag">el original 🍊</div>
-      </div>
-      <div class="bcard" style="--acc:#D6608A;--acc2:#E88BAC;cursor:pointer" onclick="setBrand('#D6608A','#E88BAC','#E8A6C0')">
-        <div class="mphone"><div class="mscreen">
-          <div class="mhead"><span class="bdot"></span> Bella Lash</div>
-          <div class="mbar a">Ana · Pestañas</div>
-          <div class="mbar b">Sofía · Lifting</div>
-          <div class="mbar al">Meli · Volumen</div>
-          <div class="mbar g">Karla · Retoque</div>
-        </div></div>
-        <div class="bname">Bella Lash</div>
-        <div class="btag">estudio de pestañas</div>
-      </div>
-      <div class="bcard" style="--acc:#7E5BD0;--acc2:#A487E0;cursor:pointer" onclick="setBrand('#7E5BD0','#A487E0','#BBA0E8')">
-        <div class="mphone"><div class="mscreen">
-          <div class="mhead"><span class="bdot"></span> Studio Aura</div>
-          <div class="mbar a">Vale · Acrílicas</div>
-          <div class="mbar b">Fer · Gelish</div>
-          <div class="mbar al">Pau · Diseño</div>
-          <div class="mbar g">Ivon · Rellenado</div>
-        </div></div>
-        <div class="bname">Studio Aura</div>
-        <div class="btag">uñas & spa</div>
-      </div>
-    </div>
-    <p class="brand-note">👆 Toca una marca para ver <b>la página en esos colores</b>. Mismo motor, vestida con la tuya. <button onclick="setBrand('#EE7A21','#F79A4D','#F2B33C')" style="background:none;border:none;color:var(--rose-deep);font-weight:700;cursor:pointer;font-size:inherit;font-family:inherit">↺ Volver a Mandarina</button></p>
-  </div>
-</section>
-
 <!-- EQUIPO -->
 <section id="equipo" class="dark pad">
   <div class="wrap">
@@ -751,8 +806,11 @@
   <div class="wrap">
     <div>
       <div class="eyebrow kicker">Un caso real</div>
-      <blockquote>No es un demo bonito. <span>Es un estudio real que cambió el cuaderno y el caos por Mandarina</span> —y hoy administra su día completo desde el celular.</blockquote>
-      <div class="by"><strong>LasheStar</strong>, un estudio de pestañas y alaciado en México, la usa todos los días. Ordenó su agenda, sus cobros y sus clientas en un solo lugar —y el tiempo que ganó se notó en sus números. La misma app puede llevar el nombre y los colores del tuyo.</div>
+      <blockquote>“Llevábamos todo en <span>tres cuadernos</span> y en una app de calendario gratis, llena de anuncios: se veía amontonada y nada profesional. Una vez al mes nos sentábamos a sacar cuánto habíamos hecho —sin recordatorios, sin ingresos, sin forma de ver qué servicio dejaba más. Con Mandarina por fin tengo la agenda, los cobros y mis números <span>en un solo lugar; la abro y la siento mía.</span>”</blockquote>
+      <div class="quote-by">
+        <span class="qav">N</span>
+        <span class="qwho"><strong>Naomi</strong> · dueña de LasheStar<br><span class="qsub">Estudio de pestañas y alaciado · la usa todos los días</span></span>
+      </div>
     </div>
     <div>
       <div class="facts">
@@ -761,7 +819,7 @@
         <div class="fact"><div class="fn">+28%</div><div class="fl">crecimiento sostenido en ventas al aprovechar ese tiempo</div></div>
         <div class="fact"><div class="fn">+45%</div><div class="fl">su mejor mes: el pico desde que ordenó la operación</div></div>
       </div>
-      <p class="fnote">Cifras ilustrativas del efecto de ordenar la operación de un estudio; los resultados varían por negocio.</p>
+      <p class="fnote">Estimaciones de LasheStar tras ordenar su operación con Mandarina; los resultados varían por estudio.</p>
     </div>
   </div>
 </section>
@@ -775,8 +833,9 @@
     <div class="cta-row">
       <a class="btn btn-rose" target="_blank" rel="noopener"
          href="https://wa.me/525545450644?text=Hola%2C%20quiero%20una%20demo%20de%20Mandarina%20para%20mi%20estudio">💬 Agenda una demo por WhatsApp</a>
-      <button class="btn btn-ghost" onclick="startTour()">▶ Volver a ver el recorrido</button>
+      <a class="btn btn-ghost" href="/app/" target="_blank" rel="noopener">🔎 Pruébala en vivo</a>
     </div>
+    <p class="reassure">Gratis · te la configuramos con tu marca · sin permanencia · capacitación incluida</p>
     <div class="cta-social">
       <a href="https://www.instagram.com/usemandarinalat/" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="2" width="20" height="20" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.6" cy="6.4" r="1.1" fill="currentColor" stroke="none"/></svg>
@@ -786,6 +845,13 @@
     <p class="note" style="margin:24px auto 0;color:#A38C79;text-align:center">Pestañas · uñas · alaciados · cejas · cualquier estudio que viva de la agenda y las clientas que regresan.</p>
   </div>
 </section>
+
+<!-- BARRA CTA FIJA (móvil) -->
+<div class="mcta">
+  <a class="m-wa" target="_blank" rel="noopener"
+     href="https://wa.me/525545450644?text=Hola%2C%20quiero%20una%20demo%20de%20Mandarina%20para%20mi%20estudio">💬 Agenda una demo</a>
+  <a class="m-app" href="/app/" target="_blank" rel="noopener">🔎 Pruébala en vivo</a>
+</div>
 
 <footer>
   <div class="wrap">
@@ -877,6 +943,53 @@
     r.setProperty('--rose-deep',deep);r.setProperty('--rose',light);r.setProperty('--gold',gold);
   }
   window.setBrand=setBrand;
+
+  // Carrusel 3D (coverflow) de marcas — escritorio y móvil
+  (function(){
+    var grid=document.querySelector('#marca .brandgrid');
+    if(!grid) return;
+    var cards=[].slice.call(grid.querySelectorAll('.bcard'));
+    var n=cards.length, active=0, dots=null;
+    function hexOf(c){return (c.getAttribute('onclick')||'').match(/#[0-9A-Fa-f]{6}/g)||[];}
+    function layout(){
+      var cw=grid.clientWidth||900, tx=Math.min(300, cw*0.34);
+      for(var i=0;i<n;i++){
+        var off=i-active; if(off>n/2)off-=n; if(off<-n/2)off+=n;
+        var a=Math.abs(off), sc=a===0?1:(a===1?.8:.62);
+        cards[i].style.transform='translateX(calc(-50% + '+(off*tx)+'px)) rotateY('+(-off*40)+'deg) scale('+sc+')';
+        cards[i].style.opacity=a===0?'1':(a===1?'.68':'0');
+        cards[i].style.zIndex=String(100-a);
+        cards[i].style.pointerEvents=a<=1?'auto':'none';
+      }
+      if(dots){[].forEach.call(dots.children,function(d,i){d.className='cfdot'+(i===active?' on':'');});}
+    }
+    function settle(){var h=hexOf(cards[active]); if(h.length>=3) setBrand(h[0],h[1],h[2]); layout();}
+    function go(i){active=((i%n)+n)%n; settle();}
+    window.cfHome=function(){go(0);};
+    // flechas
+    var aL=document.createElement('button');aL.className='cfarrow l';aL.innerHTML='‹';aL.setAttribute('aria-label','estilo anterior');aL.onclick=function(){go(active-1);};
+    var aR=document.createElement('button');aR.className='cfarrow r';aR.innerHTML='›';aR.setAttribute('aria-label','siguiente estilo');aR.onclick=function(){go(active+1);};
+    grid.appendChild(aL);grid.appendChild(aR);
+    // dots + hint
+    dots=document.createElement('div');dots.className='cfdots';
+    for(var i=0;i<n;i++){var b=document.createElement('button');b.className='cfdot';b.setAttribute('aria-label','marca '+(i+1));(function(k){b.onclick=function(){go(k);};})(i);dots.appendChild(b);}
+    var hint=document.createElement('p');hint.className='cfhint';hint.innerHTML='‹ Explora los estilos › — la página se pinta con ese color';
+    grid.parentNode.insertBefore(dots,grid.nextSibling);
+    grid.parentNode.insertBefore(hint,dots.nextSibling);
+    // tap tarjeta lateral → centrarla
+    cards.forEach(function(c,i){c.addEventListener('click',function(e){ if(i!==active){e.stopPropagation();go(i);} });});
+    // swipe táctil + arrastre con mouse
+    var x0=null,y0=null,drag=false;
+    function down(x,y){x0=x;y0=y;drag=true;}
+    function up(x,y){ if(!drag){return;} drag=false; if(x0==null)return; var dx=x-x0,dy=y-y0;
+      if(Math.abs(dx)>42 && Math.abs(dx)>Math.abs(dy)*1.1) go(active+(dx<0?1:-1)); x0=null;y0=null; }
+    grid.addEventListener('touchstart',function(e){down(e.touches[0].clientX,e.touches[0].clientY);},{passive:true});
+    grid.addEventListener('touchend',function(e){up(e.changedTouches[0].clientX,e.changedTouches[0].clientY);},{passive:true});
+    grid.addEventListener('mousedown',function(e){down(e.clientX,e.clientY);});
+    window.addEventListener('mouseup',function(e){up(e.clientX,e.clientY);});
+    window.addEventListener('resize',layout);
+    layout();
+  })();
 
   // Barra de navegación fija en móvil (aparece solo dentro del recorrido) + swipe táctil
   (function(){
