@@ -257,15 +257,20 @@
   .g-free b{color:var(--rose-deep)}
   .tour-phone{grid-area:phone;align-self:center;display:flex;justify-content:center}
   @media(max-width:900px){
-    .tour .wrap{grid-template-columns:1fr;grid-template-areas:"copy" "phone" "guide";row-gap:0}
+    .tour{padding-bottom:210px}
+    .tour .wrap{grid-template-columns:1fr;grid-template-areas:"copy" "phone";row-gap:0}
     .tour-phone{margin:18px 0}
-    .guide{position:sticky;bottom:10px;margin-top:14px;padding:18px 20px 16px;box-shadow:0 -6px 26px rgba(58,36,22,.20)}
+    .guide{position:fixed;left:0;right:0;bottom:0;margin:0;border:none;border-top:1px solid #F0DEC9;border-radius:0;
+      background:rgba(253,246,236,.96);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
+      box-shadow:0 -10px 30px -14px rgba(58,36,22,.5);padding:14px 18px calc(14px + env(safe-area-inset-bottom));
+      z-index:60;transform:translateY(130%);transition:transform .28s ease}
+    .guide.visible{transform:translateY(0)}
     .g-title{font-size:1.3rem;margin:6px 0 8px}
     .g-narr{font-size:.92rem;min-height:0}
     .g-dots{margin:12px 0 12px}
     .g-free{display:none}
-    .phone{width:290px;flex-basis:290px}
-    .screen{height:520px}
+    .phone{width:264px;flex-basis:264px}
+    .screen{height:500px}
   }
 
   .vgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:52px}
@@ -606,7 +611,7 @@
       </div>
     </div>
 
-    <div class="guide">
+    <div class="guide" id="tourGuide">
       <div class="g-count" id="g-count">Paso 1 de 8</div>
       <div class="g-title" id="g-title">Tu día, de un vistazo</div>
       <p class="g-narr" id="g-narr">Abres Mandarina y ahí está el día completo: cada técnica en su columna, con su color y su horario. Sin cuaderno, sin adivinar quién atiende a quién.</p>
@@ -857,7 +862,7 @@
     nx.textContent=(i===TOUR.length-1)?'Agenda tu demo →':'Siguiente →';
     var dots=document.querySelectorAll('#g-dots i');
     dots.forEach(function(x,ix){ x.className=(ix===cur)?'on':''; });
-    // sin auto-scroll: la guía sticky ya mantiene el teléfono visible; mover la página cortaba la demo
+    // sin auto-scroll por paso (causaba brincos): la barra fija de navegación mantiene todo visible
   }
   function tourNext(){
     if(cur===TOUR.length-1){ document.getElementById('demo').scrollIntoView({behavior:'smooth'}); return; }
@@ -872,5 +877,24 @@
     r.setProperty('--rose-deep',deep);r.setProperty('--rose',light);r.setProperty('--gold',gold);
   }
   window.setBrand=setBrand;
+
+  // Barra de navegación fija en móvil (aparece solo dentro del recorrido) + swipe táctil
+  (function(){
+    var guide=document.getElementById('tourGuide'), sec=document.getElementById('tour');
+    if(guide && sec && 'IntersectionObserver' in window){
+      new IntersectionObserver(function(es){es.forEach(function(en){guide.classList.toggle('visible',en.isIntersecting)})},{threshold:0,rootMargin:'-8% 0px -8% 0px'}).observe(sec);
+    }
+    var sc=document.querySelector('.tour-phone .screen');
+    if(sc){
+      var x0=null,y0=null;
+      sc.addEventListener('touchstart',function(e){x0=e.touches[0].clientX;y0=e.touches[0].clientY},{passive:true});
+      sc.addEventListener('touchend',function(e){
+        if(x0===null)return;
+        var dx=e.changedTouches[0].clientX-x0, dy=e.changedTouches[0].clientY-y0;
+        if(Math.abs(dx)>45 && Math.abs(dx)>Math.abs(dy)*1.4){ if(dx<0){tourNext();}else{tourStep(cur-1);} }
+        x0=y0=null;
+      },{passive:true});
+    }
+  })();
   buildDots(); tourStep(0);
 </script>
