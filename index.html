@@ -273,16 +273,26 @@
     .screen{height:500px}
   }
 
-  .vgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:52px}
-  .vcard{background:var(--paper);border:1px solid #F1E5D8;border-radius:18px;padding:26px 22px;
-    box-shadow:0 4px 14px rgba(58,36,22,.05)}
-  .vcard .vi{width:44px;height:44px;border-radius:12px;background:var(--rose-soft);display:flex;
-    align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:16px}
-  .vcard h3{font-size:1.08rem;font-weight:700;margin-bottom:8px}
-  .vcard p{font-size:.9rem;color:var(--ink-soft);line-height:1.5}
-  .vcard .out{margin-top:13px;font-size:.78rem;font-weight:600;color:var(--rose-deep);display:flex;align-items:center;gap:6px}
-  @media(max-width:900px){.vgrid{grid-template-columns:1fr 1fr}}
-  @media(max-width:560px){.vgrid{grid-template-columns:1fr}}
+  /* Bento grid de funciones */
+  .bento{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:52px}
+  .bt{background:var(--paper);border:1px solid #F1E5D8;border-radius:18px;padding:22px 20px;
+    box-shadow:0 4px 14px rgba(58,36,22,.05);display:flex;flex-direction:column}
+  .bt .vi{width:42px;height:42px;border-radius:12px;background:var(--rose-soft);display:flex;
+    align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:14px}
+  .bt h3{font-size:1.04rem;font-weight:700;margin-bottom:7px;color:var(--ink)}
+  .bt p{font-size:.85rem;color:var(--ink-soft);line-height:1.45;margin:0}
+  .bt .out{margin-top:auto;padding-top:14px;font-size:.8rem;font-weight:700;color:var(--rose-deep)}
+  .bt.hero{grid-column:span 2;background:linear-gradient(155deg,#fff,var(--cream))}
+  .bt.wide{grid-column:span 2}
+  .v-agenda{display:flex;flex-direction:column;gap:7px;margin:14px 0 4px}
+  .v-agenda span{border-radius:9px;padding:8px 12px;color:#fff;font-size:.72rem;font-weight:700}
+  .v-agenda .b1{background:linear-gradient(150deg,var(--rose),var(--rose-deep));margin-right:36px}
+  .v-agenda .b2{background:linear-gradient(150deg,#6FB6D8,#4E9BC4);margin:0 14px 0 18px}
+  .v-agenda .b3{background:linear-gradient(150deg,#4E9E52,#2E7D32);margin-right:54px}
+  .v-chart{display:flex;align-items:flex-end;gap:10px;height:78px;margin:16px 0 4px}
+  .v-chart i{flex:1;border-radius:7px 7px 0 0;background:linear-gradient(180deg,var(--rose-deep),var(--gold))}
+  @media(max-width:900px){.bento{grid-template-columns:repeat(2,1fr)}.bt.hero,.bt.wide{grid-column:span 2}}
+  @media(max-width:560px){.bento{grid-template-columns:1fr}.bt.hero,.bt.wide{grid-column:span 1}}
 
   .perm{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:50px}
   .pcol{border-radius:20px;padding:30px 28px}
@@ -506,17 +516,6 @@
         <div class="bname">Mandarina</div>
         <div class="btag">el original 🍊</div>
       </div>
-      <div class="bcard" style="--acc:#C95F85;--acc2:#EF8BAE;cursor:pointer" onclick="setBrand('#C95F85','#EF8BAE','#F2A7C0')">
-        <div class="mphone"><div class="mscreen">
-          <div class="mhead"><span class="bdot"></span> 🌷 Rosa clásico</div>
-          <div class="mbar a">Emily · Volumen Ruso</div>
-          <div class="mbar b">Regina · Clásicas</div>
-          <div class="mbar al">Ale · Lifting</div>
-          <div class="mbar g">Dani · Retoque</div>
-        </div></div>
-        <div class="bname">Rosa clásico</div>
-        <div class="btag">estilo pestañas 🌷</div>
-      </div>
       <div class="bcard" style="--acc:#DB2E77;--acc2:#EC6AA3;cursor:pointer" onclick="setBrand('#DB2E77','#EC6AA3','#F49CC1')">
         <div class="mphone"><div class="mscreen">
           <div class="mhead"><span class="bdot"></span> 🌸 Bella Lash</div>
@@ -538,6 +537,17 @@
         </div></div>
         <div class="bname">Studio Aura</div>
         <div class="btag">uñas & spa 💜</div>
+      </div>
+      <div class="bcard" style="--acc:#C95F85;--acc2:#EF8BAE;cursor:pointer" onclick="setBrand('#C95F85','#EF8BAE','#F2A7C0')">
+        <div class="mphone"><div class="mscreen">
+          <div class="mhead"><span class="bdot"></span> 🌷 Rosa clásico</div>
+          <div class="mbar a">Emily · Volumen Ruso</div>
+          <div class="mbar b">Regina · Clásicas</div>
+          <div class="mbar al">Ale · Lifting</div>
+          <div class="mbar g">Dani · Retoque</div>
+        </div></div>
+        <div class="bname">Rosa clásico</div>
+        <div class="btag">estilo pestañas 🌷</div>
       </div>
       <div class="bcard" style="--acc:#2E9E9E;--acc2:#56BEBE;cursor:pointer" onclick="setBrand('#2E9E9E','#56BEBE','#86D2D2')">
         <div class="mphone"><div class="mscreen">
@@ -734,33 +744,35 @@
       <div class="eyebrow kicker">Qué hace por ti</div>
       <h2 class="big serif">Cada función responde a algo que <em>hoy te cuesta tiempo o dinero.</em></h2>
     </div>
-    <div class="vgrid">
-      <div class="vcard"><div class="vi">📅</div><h3>Agenda visual por persona</h3>
-        <p>Cada técnica en su columna, con su color. Las citas que se empalman se escalonan y quedan legibles —nunca dos encimadas por error.</p>
+    <div class="bento">
+      <div class="bt hero"><div class="vi">📅</div><h3>Agenda visual por persona</h3>
+        <p>Cada técnica en su columna y su color; las citas que se empalman se escalonan solas.</p>
+        <div class="v-agenda"><span class="b1">Emily · Volumen Ruso</span><span class="b2">Regina · Híbrida</span><span class="b3">Dani · Retoque</span></div>
         <div class="out">→ Se acaban los choques de horario</div></div>
-      <div class="vcard"><div class="vi">💬</div><h3>Confirma por WhatsApp</h3>
-        <p>Un botón abre el chat de la clienta con el mensaje escrito. Confirmas o recuerdas la cita sin copiar teléfonos ni redactar nada.</p>
-        <div class="out">→ Menos huecos y no-shows</div></div>
-      <div class="vcard"><div class="vi">💰</div><h3>Cobros y comisiones</h3>
-        <p>Cada cobro queda guardado con método de pago. Si es tarjeta, la comisión del 4% de la terminal se registra sola como gasto.</p>
-        <div class="out">→ Tu caja cuadra al centavo</div></div>
-      <div class="vcard"><div class="vi">📊</div><h3>Insights del período</h3>
-        <p>Tu mejor día, tu ticket promedio, el ranking de servicios y qué creció o se cayó vs. el mes pasado. Sin exportar nada a Excel.</p>
+      <div class="bt hero"><div class="vi">📊</div><h3>Insights del período</h3>
+        <p>Tu mejor día, tu ticket promedio y qué creció o se cayó —sin exportar nada a Excel.</p>
+        <div class="v-chart"><i style="height:38%"></i><i style="height:60%"></i><i style="height:82%"></i><i style="height:100%"></i></div>
         <div class="out">→ Sabes qué empujar y qué soltar</div></div>
-      <div class="vcard"><div class="vi">💖</div><h3>Reactivar clientas dormidas</h3>
-        <p>La app te muestra quién lleva 60+ días sin venir y quién más gasta. Un toque las trae de vuelta por WhatsApp.</p>
+      <div class="bt"><div class="vi">💬</div><h3>Confirma por WhatsApp</h3>
+        <p>Un botón abre el chat con el mensaje ya escrito. Sin copiar teléfonos.</p>
+        <div class="out">→ Menos huecos y no-shows</div></div>
+      <div class="bt"><div class="vi">💰</div><h3>Cobros y comisiones</h3>
+        <p>Cada cobro con su método; la comisión de tarjeta se registra sola.</p>
+        <div class="out">→ Tu caja cuadra al centavo</div></div>
+      <div class="bt"><div class="vi">💖</div><h3>Reactivar clientas</h3>
+        <p>Te dice quién lleva 60+ días sin venir. Un toque y vuelve por WhatsApp.</p>
         <div class="out">→ Recuperas ingresos que ya tenías</div></div>
-      <div class="vcard"><div class="vi">🔄</div><h3>Recordatorio de retoque</h3>
-        <p>Mandarina sabe cuándo le toca retoque a cada clienta según su servicio y te lo recuerda —hasta con un correo diario con la lista del día.</p>
-        <div class="out">→ Vuelven a tiempo, no cuando se acuerdan</div></div>
-      <div class="vcard"><div class="vi">📷</div><h3>Fotos antes / después</h3>
-        <p>Guarda el antes y el después en cada cita. Se vuelven la referencia para el retoque y el portafolio de cada clienta.</p>
-        <div class="out">→ Retoques exactos y contenido listo</div></div>
-      <div class="vcard"><div class="vi">🔒</div><h3>Permisos por rol</h3>
-        <p>Tu asistente agenda para todo el equipo, pero no ve teléfonos, cobros ni números. Tú, como dueña, ves todo.</p>
+      <div class="bt"><div class="vi">🔄</div><h3>Recordatorio de retoque</h3>
+        <p>Sabe cuándo le toca retoque a cada clienta y te lo recuerda.</p>
+        <div class="out">→ Vuelven a tiempo</div></div>
+      <div class="bt"><div class="vi">📷</div><h3>Fotos antes / después</h3>
+        <p>Guarda el antes y el después de cada cita, listo para el retoque.</p>
+        <div class="out">→ Retoques exactos y contenido</div></div>
+      <div class="bt"><div class="vi">🔒</div><h3>Permisos por rol</h3>
+        <p>Tu asistente agenda, pero no ve teléfonos, cobros ni números.</p>
         <div class="out">→ Delegas sin exponer tu negocio</div></div>
-      <div class="vcard"><div class="vi">🔔</div><h3>Avisos entre el equipo</h3>
-        <p>Si alguien mueve, reasigna o cancela una cita tuya, te llega por correo, por WhatsApp y con una campana dentro de la app.</p>
+      <div class="bt wide"><div class="vi">🔔</div><h3>Avisos entre el equipo</h3>
+        <p>Si alguien mueve o cancela una cita tuya, te llega por correo, WhatsApp y con una campana dentro de la app.</p>
         <div class="out">→ Nadie se queda fuera del cambio</div></div>
     </div>
   </div>
