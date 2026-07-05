@@ -373,6 +373,7 @@
     .mcta a{flex:1;text-align:center;border-radius:999px;padding:13px 10px;font-weight:700;font-size:.92rem;text-decoration:none}
     .mcta .m-wa{background:var(--rose-deep);color:#fff}
     .mcta .m-app{background:transparent;color:#F3E7DB;border:1px solid rgba(255,255,255,.28)}
+    body.hide-mcta .mcta{display:none}  /* dentro del recorrido: cede el fondo a la barra Siguiente */
   }
   .mphone{width:130px;height:200px;margin:0 auto;border-radius:24px;background:#1c1109;padding:7px;
     box-shadow:0 12px 26px rgba(0,0,0,.22)}
@@ -1007,7 +1008,7 @@
   (function(){
     var guide=document.getElementById('tourGuide'), sec=document.getElementById('tour');
     if(guide && sec && 'IntersectionObserver' in window){
-      new IntersectionObserver(function(es){es.forEach(function(en){guide.classList.toggle('visible',en.isIntersecting)})},{threshold:0,rootMargin:'-8% 0px -8% 0px'}).observe(sec);
+      new IntersectionObserver(function(es){es.forEach(function(en){guide.classList.toggle('visible',en.isIntersecting);document.body.classList.toggle('hide-mcta',en.isIntersecting);})},{threshold:0,rootMargin:'-8% 0px -8% 0px'}).observe(sec);
     }
     var sc=document.querySelector('.tour-phone .screen');
     if(sc){
