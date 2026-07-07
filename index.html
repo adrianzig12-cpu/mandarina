@@ -401,7 +401,70 @@
     *{transition:none!important;animation:none!important}
     .phone.tilt{transform:none}
   }
+
+  /* --- pantallas nuevas del recorrido: reservas · fidelización · app en el cel --- */
+  .rsvc{display:flex;justify-content:space-between;align-items:center;padding:10px 12px;border:1px solid #EDD9C6;
+    border-radius:11px;margin-bottom:8px;background:#fff}
+  .rsvc.on{border-color:var(--rose-deep);background:var(--rose-soft)}
+  .rsvc .p{font-family:var(--serif);font-style:italic;color:var(--ink)}
+  .slots{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin:4px 0 2px}
+  .slot{text-align:center;font-size:.68rem;font-weight:600;padding:8px 0;border-radius:9px;
+    border:1px solid #EDD9C6;color:var(--ink-soft);background:#fff}
+  .slot.on{background:var(--rose-deep);border-color:var(--rose-deep);color:#fff}
+  .slot.off{opacity:.4;text-decoration:line-through}
+  .stars{color:var(--gold);letter-spacing:2px;font-size:.95rem;white-space:nowrap}
+  .stars .off{color:#E7D6C4}
+  .home{background:linear-gradient(160deg,#F7E7D3,#FCEFC9);border-radius:16px;padding:14px 14px 18px}
+  .home-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px 10px;margin-top:4px}
+  .appicon{display:flex;flex-direction:column;align-items:center;gap:5px;font-size:.55rem;color:#6B513C;text-align:center}
+  .appicon .ico{width:44px;height:44px;border-radius:13px;background:#fff;display:flex;align-items:center;
+    justify-content:center;font-size:1.3rem;box-shadow:0 4px 10px rgba(60,36,22,.12)}
+  .appicon.mand .ico{background:#FCEFE0;box-shadow:0 0 0 2.5px var(--gold),0 4px 10px rgba(60,36,22,.16)}
+  .appicon.mand{font-weight:700;color:var(--ink)}
+  .mfruit{display:block}
+  .appicon .ico .mfruit{width:30px;height:30px}
+  .lockpush{display:flex;gap:9px;align-items:flex-start;background:rgba(255,255,255,.94);border-radius:13px;
+    padding:10px 11px;margin:12px 2px 0;box-shadow:0 6px 16px rgba(60,36,22,.15)}
+  .lockpush .li{width:30px;height:30px;border-radius:8px;flex:0 0 auto;display:flex;align-items:center;
+    justify-content:center;background:#FCEFE0;box-shadow:0 0 0 1.5px rgba(242,179,60,.55)}
+  .lockpush .li .mfruit{width:22px;height:22px}
+  .lockpush .lt{font-size:.7rem;line-height:1.34;color:var(--ink)}
+  .lockpush .lb{font-size:.57rem;color:var(--ink-faint);font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:2px}
+
+  /* --- spotlight Reservas online --- */
+  .reservas-spot{background:linear-gradient(180deg,var(--cream),#fff)}
+  .rs-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:52px;align-items:center}
+  .rs-list{list-style:none;padding:0;margin:22px 0 26px;display:flex;flex-direction:column;gap:12px}
+  .rs-list li{position:relative;padding-left:30px;font-size:1rem;color:var(--ink);line-height:1.4}
+  .rs-list li::before{content:"🍊";position:absolute;left:0;top:-1px;font-size:.95rem}
+  .rs-list b{color:var(--ink)}
+  .rs-visual{display:flex;justify-content:center}
+  .rs-card{width:100%;max-width:360px;background:#fff;border:1px solid #F1E5D8;border-radius:22px;
+    padding:20px 20px 22px;box-shadow:0 22px 50px -24px rgba(60,36,22,.5)}
+  .rs-url{display:flex;align-items:center;gap:7px;font-size:.78rem;font-weight:700;color:var(--rose-deep);
+    background:var(--rose-soft);border-radius:999px;padding:8px 13px;margin-bottom:16px;
+    overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+  .rs-card .slots{grid-template-columns:repeat(3,1fr)}
+  @media(max-width:820px){.rs-grid{grid-template-columns:1fr;gap:30px}.rs-visual{order:-1}}
 </style>
+
+<!-- logo mandarina (dibujado, reutilizable) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <radialGradient id="mfF" cx="40%" cy="36%" r="72%">
+      <stop offset="0" stop-color="#FBB869"/><stop offset=".55" stop-color="#F5822B"/><stop offset="1" stop-color="#DC670F"/>
+    </radialGradient>
+    <linearGradient id="mfL" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#63AC5E"/><stop offset="1" stop-color="#2E7D32"/>
+    </linearGradient>
+    <symbol id="mandfruit" viewBox="30 6 210 210">
+      <circle cx="120" cy="128" r="82" fill="url(#mfF)"/>
+      <ellipse cx="92" cy="98" rx="30" ry="20" fill="#fff" opacity="0.22"/>
+      <rect x="113" y="34" width="12" height="26" rx="6" fill="#3E6B2E"/>
+      <path d="M125 42 C 158 12, 210 14, 228 32 C 208 66, 160 70, 125 52 Z" fill="url(#mfL)"/>
+    </symbol>
+  </defs>
+</svg>
 
 <nav class="nav">
   <div class="wrap">
@@ -409,6 +472,7 @@
     <div class="nav-links">
       <a href="#problema">El día en tu estudio</a>
       <a href="#tour">Recorrido</a>
+      <a href="#reservas">Reservas online</a>
       <a href="#valor">Qué hace por ti</a>
       <a href="#equipo">Tú y tu equipo</a>
       <a class="btn btn-rose" target="_blank" rel="noopener"
@@ -425,12 +489,13 @@
       <h1 class="serif">Tu agenda, tus cobros y tus clientas <em>en un solo lugar</em>, desde el celular.</h1>
       <p class="lede">Con Mandarina, un estudio real administra su día completo desde el celular. La misma app puede llevar el nombre y los colores del tuyo.</p>
       <div class="hero-cta">
-        <a class="btn btn-rose" href="/app/" target="_blank" rel="noopener">🔎 Pruébala en vivo</a>
-        <button class="btn btn-ghost" onclick="startTour()">▶ Ver recorrido guiado</button>
+        <button class="btn btn-rose" onclick="startTour()">▶ Ver recorrido guiado</button>
+        <a class="btn btn-ghost" target="_blank" rel="noopener"
+           href="https://wa.me/525545450644?text=Hola%2C%20quiero%20una%20demo%20de%20Mandarina%20para%20mi%20estudio">💬 Agenda una demo</a>
       </div>
       <div class="trust">
         <span><span class="dot"></span> Corre en tu celular</span>
-        <span><span class="dot"></span> Sin instalar nada</span>
+        <span><span class="dot"></span> Se instala como app, sin tiendas</span>
         <span><span class="dot"></span> Tus datos, siempre tuyos</span>
       </div>
     </div>
@@ -689,7 +754,57 @@
               <div class="notif"><div class="ni">📅</div><div><div class="nt"><b>Jess</b> movió tu cita de Emily: antes <b>Sáb 11:00</b> → ahora <b>Sáb 12:30</b>.</div><div class="nw">Hace 12 min</div></div></div>
               <div class="notif"><div class="ni">🔄</div><div><div class="nt"><b>Jess</b> te asignó una cita: Carmen · Alaciado · Sáb 13:30.</div><div class="nw">Hace 40 min</div></div></div>
               <div class="notif"><div class="ni">✅</div><div><div class="nt">Regina confirmó por WhatsApp su cita del sábado.</div><div class="nw">Ayer</div></div></div>
-              <div class="hint" style="padding-top:14px">Te llega por <b>correo</b> y por <b>WhatsApp</b> aunque no estés en la app.</div>
+              <div class="hint" style="padding-top:14px">Te llega como <b>notificación push</b> al celular y con la <b>campana</b> en la app —aunque la tengas cerrada.</div>
+            </div>
+
+            <!-- RESERVAS ONLINE -->
+            <div class="tscreen" id="ts-reservar" style="display:none">
+              <div class="banner">🌐 Tu liga de reservas · <b>tuestudio</b>.usemandarina.com/reservar</div>
+              <div class="sect-lbl">La clienta elige servicio</div>
+              <div class="rsvc on"><div><div class="nm">Volumen Ruso</div><div class="meta">1 h 30 min · con quien prefiera</div></div><div class="p">$1,200</div></div>
+              <div class="rsvc"><div><div class="nm">Técnica Híbrida</div><div class="meta">1 h 30 min</div></div><div class="p">$950</div></div>
+              <div class="sect-lbl">Horario libre · Sáb 4 jul</div>
+              <div class="slots">
+                <span class="slot off">9:00</span><span class="slot">11:30</span><span class="slot on">12:00</span><span class="slot">12:15</span>
+                <span class="slot off">13:30</span><span class="slot">15:30</span><span class="slot">16:00</span><span class="slot">16:15</span>
+              </div>
+              <div class="hint" style="padding-top:12px">Solo muestra huecos <b>realmente libres</b>: respeta tus citas y tus bloqueos.</div>
+            </div>
+
+            <!-- CUMPLEAÑOS + ENCUESTAS -->
+            <div class="tscreen" id="ts-fideliza" style="display:none">
+              <div class="banner">🎂 Hoy cumple <b>Emily Ramírez</b> · felicítala con un toque</div>
+              <div class="card"><div class="row"><div><div class="nm">Emily Ramírez</div><div class="meta">Cumple hoy · clienta desde 2023</div></div>
+                <button class="wa" style="margin:0;padding:8px 12px;font-size:.72rem">💬 Felicitar</button></div></div>
+              <div class="sect-lbl">⭐ Opiniones después de la cita</div>
+              <div class="card"><div class="row"><div><div class="nm">Regina Solís</div><div class="meta">Técnica Híbrida · Jess</div></div>
+                <span class="stars">★★★★★</span></div>
+                <div class="money-note" style="background:#FBF0F4;color:#8A4A63">💬 <span>"Quedé feliz, súper detallista. Vuelvo en 3 semanas."</span></div></div>
+              <div class="card"><div class="row"><div><div class="nm">Ale Fuentes</div><div class="meta">Cola de Sirena · Nao</div></div>
+                <span class="stars">★★★★<span class="off">★</span></span></div></div>
+              <div class="hint" style="padding-top:12px">Cada clienta recibe su liga para opinar; el promedio se ve en <b>Insights</b>.</div>
+            </div>
+
+            <!-- APP EN TU CELULAR + PUSH -->
+            <div class="tscreen" id="ts-movil" style="display:none">
+              <div class="sect-lbl" style="margin-top:2px">Se instala como app en tu celular</div>
+              <div class="home">
+                <div class="home-grid">
+                  <div class="appicon mand"><div class="ico"><svg class="mfruit"><use href="#mandfruit"/></svg></div>Mandarina</div>
+                  <div class="appicon"><div class="ico">💬</div>WhatsApp</div>
+                  <div class="appicon"><div class="ico">📷</div>Fotos</div>
+                  <div class="appicon"><div class="ico">🗓️</div>Cal</div>
+                </div>
+                <div class="lockpush">
+                  <div class="li"><svg class="mfruit"><use href="#mandfruit"/></svg></div>
+                  <div><div class="lb">Mandarina · ahora</div><div class="lt"><b>Nueva reserva online:</b> Emily · Volumen Ruso · hoy 12:00.</div></div>
+                </div>
+                <div class="lockpush">
+                  <div class="li"><svg class="mfruit"><use href="#mandfruit"/></svg></div>
+                  <div><div class="lb">Mandarina · hace 5 min</div><div class="lt"><b>Jess</b> movió tu cita de Regina a las 12:30.</div></div>
+                </div>
+              </div>
+              <div class="hint" style="padding-top:12px">Un ícono en tu pantalla, abre a pantalla completa y te <b>avisa aunque esté cerrada</b>.</div>
             </div>
 
           </div>
@@ -725,7 +840,7 @@
     </div>
 
     <div class="guide" id="tourGuide">
-      <div class="g-count" id="g-count">Paso 1 de 8</div>
+      <div class="g-count" id="g-count">Paso 1 de 11</div>
       <div class="g-title" id="g-title">Tu día, de un vistazo</div>
       <p class="g-narr" id="g-narr">Abres Mandarina y ahí está el día completo: cada técnica en su columna, con su color y su horario. Sin cuaderno, sin adivinar quién atiende a quién.</p>
       <div class="g-dots" id="g-dots"></div>
@@ -734,6 +849,41 @@
         <button class="btn g-next" id="g-next" onclick="tourNext()">Siguiente →</button>
       </div>
       <div class="g-free">o explórala libre con la <b>barra de abajo</b> del teléfono 👇</div>
+    </div>
+  </div>
+</section>
+
+<!-- SPOTLIGHT: RESERVAS ONLINE -->
+<section id="reservas" class="pad reservas-spot">
+  <div class="wrap">
+    <div class="rs-grid">
+      <div class="rs-copy">
+        <div class="eyebrow kicker">Lo nuevo · Captación</div>
+        <h2 class="big serif">Tus clientas <em>agendan solas</em>, de día y de noche.</h2>
+        <p class="sub">Comparte tu liga y deja que reserven sin llamarte ni esperar respuesta. Mandarina solo les muestra los huecos <b>realmente libres</b> y la cita entra sola a tu agenda —y te llega al celular.</p>
+        <ul class="rs-list">
+          <li><b>Respeta tu agenda:</b> nunca ofrece un horario ocupado o bloqueado.</li>
+          <li><b>Con tu marca:</b> tu nombre y tus colores en tu propia liga de reservas.</li>
+          <li><b>Te avisa al instante:</b> cada reserva te llega como notificación push a tu app.</li>
+        </ul>
+        <a class="btn btn-rose" target="_blank" rel="noopener"
+           href="https://wa.me/525545450644?text=Hola%2C%20quiero%20activar%20reservas%20online%20con%20Mandarina">💬 La quiero para mi estudio</a>
+      </div>
+      <div class="rs-visual">
+        <div class="rs-card">
+          <div class="rs-url">🌐 <span><b>tuestudio</b>.usemandarina.com/reservar</span></div>
+          <div class="rsvc on"><div><div class="nm">Volumen Ruso</div><div class="meta">1 h 30 min · con quien prefiera</div></div><div class="p">$1,200</div></div>
+          <div class="sect-lbl">Horarios libres · Sáb 4 jul</div>
+          <div class="slots">
+            <span class="slot off">9:00</span><span class="slot">11:30</span><span class="slot on">12:00</span>
+            <span class="slot">15:30</span><span class="slot">16:00</span><span class="slot off">17:30</span>
+          </div>
+          <div class="lockpush">
+            <div class="li"><svg class="mfruit"><use href="#mandfruit"/></svg></div>
+            <div><div class="lb">Mandarina · ahora</div><div class="lt"><b>Nueva reserva online:</b> Emily · Volumen Ruso · hoy 12:00.</div></div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -769,12 +919,18 @@
       <div class="bt"><div class="vi">📷</div><h3>Fotos antes / después</h3>
         <p>Guarda el antes y el después de cada cita, listo para el retoque.</p>
         <div class="out">→ Retoques exactos y contenido</div></div>
+      <div class="bt"><div class="vi">🌐</div><h3>Reservas online</h3>
+        <p>Tus clientas agendan solas desde tu liga; solo ven los huecos libres y la cita entra a tu agenda.</p>
+        <div class="out">→ Menos ir y venir por WhatsApp</div></div>
+      <div class="bt"><div class="vi">🎂</div><h3>Cumpleaños y opiniones</h3>
+        <p>Te recuerda qué clienta cumple años y le pide una reseña con estrellas después de su cita.</p>
+        <div class="out">→ Clientas que regresan y te recomiendan</div></div>
       <div class="bt"><div class="vi">🔒</div><h3>Permisos por rol</h3>
         <p>Tu asistente agenda, pero no ve teléfonos, cobros ni números.</p>
         <div class="out">→ Delegas sin exponer tu negocio</div></div>
-      <div class="bt wide"><div class="vi">🔔</div><h3>Avisos entre el equipo</h3>
-        <p>Si alguien mueve o cancela una cita tuya, te llega por correo, WhatsApp y con una campana dentro de la app.</p>
-        <div class="out">→ Nadie se queda fuera del cambio</div></div>
+      <div class="bt wide"><div class="vi">🔔</div><h3>App en tu celular con avisos push</h3>
+        <p>Se instala como app —un ícono en tu pantalla— y te manda notificaciones push cuando alguien mueve una cita o entra una reserva, aunque la tengas cerrada. Adentro, una campana guarda cada cambio.</p>
+        <div class="out">→ Todo tu equipo enterado al instante</div></div>
     </div>
   </div>
 </section>
@@ -846,7 +1002,7 @@
     <div class="cta-row">
       <a class="btn btn-rose" target="_blank" rel="noopener"
          href="https://wa.me/525545450644?text=Hola%2C%20quiero%20una%20demo%20de%20Mandarina%20para%20mi%20estudio">💬 Agenda una demo por WhatsApp</a>
-      <a class="btn btn-ghost" href="/app/" target="_blank" rel="noopener">🔎 Pruébala en vivo</a>
+      <button class="btn btn-ghost" onclick="startTour()">▶ Ver el recorrido</button>
     </div>
     <p class="reassure">Gratis · te la configuramos con tu marca · sin permanencia · capacitación incluida</p>
     <div class="cta-social">
@@ -863,7 +1019,7 @@
 <div class="mcta">
   <a class="m-wa" target="_blank" rel="noopener"
      href="https://wa.me/525545450644?text=Hola%2C%20quiero%20una%20demo%20de%20Mandarina%20para%20mi%20estudio">💬 Agenda una demo</a>
-  <a class="m-app" href="/app/" target="_blank" rel="noopener">🔎 Pruébala en vivo</a>
+  <a class="m-app" href="#tour" onclick="setTimeout(startTour,10)">▶ Ver recorrido</a>
 </div>
 
 <footer>
@@ -880,13 +1036,16 @@
 </footer>
 
 <script>
-  var screens=['agenda','cobros','clientas','insights','notif'];
+  var screens=['agenda','cobros','clientas','insights','notif','reservar','fideliza','movil'];
   var HEAD={
     agenda:{t:'Hoy <span class="star">✦</span>', s:'Sáb 4 jul · 6 citas · 3 confirmadas'},
     cobros:{t:'Cobros <span class="star">✦</span>', s:'Sáb 4 jul · corte del día'},
     clientas:{t:'Clientas <span class="star">✦</span>', s:'269 registradas'},
     insights:{t:'Insights <span class="star">✦</span>', s:'Este mes · al día de hoy'},
-    notif:{t:'Novedades <span class="star">✦</span>', s:'Cambios en tus citas'}
+    notif:{t:'Novedades <span class="star">✦</span>', s:'Cambios en tus citas'},
+    reservar:{t:'Reservas <span class="star">✦</span>', s:'Tu liga pública · en vivo'},
+    fideliza:{t:'Fideliza <span class="star">✦</span>', s:'Cumpleaños y opiniones'},
+    movil:{t:'En tu celular <span class="star">✦</span>', s:'App instalable + avisos'}
   };
   function setScreen(name){
     screens.forEach(function(s){
@@ -913,14 +1072,20 @@
      n:'Un toque abre el detalle: servicio, hora, precio, estatus y las fotos de antes y después. Todo en una sola pantalla.'},
     {s:'agenda', det:true, spot:'#det-wa', t:'Confirma por WhatsApp',
      n:'Un botón abre el chat de la clienta con el mensaje ya escrito. Confirmas o recuerdas la cita en segundos: menos huecos, menos “se me olvidó”.'},
+    {s:'reservar', t:'Tus clientas agendan solas',
+     n:'Comparte tu liga y la clienta reserva sin llamarte: elige servicio, día y hora. Solo ve los huecos realmente libres —Mandarina respeta tu agenda y tus bloqueos— y la cita entra sola a tu día.'},
     {s:'cobros', t:'Cobra sin cuentas raras',
      n:'Cada cobro queda guardado con su método de pago. Si es tarjeta, la comisión del 4% de la terminal se registra sola como gasto. Tu caja cuadra al centavo.'},
     {s:'clientas', t:'Reactiva y no pierdas retoques',
      n:'Mandarina te dice a quién le toca retoque esta semana y quién lleva 60+ días sin venir —con botón para traerla por WhatsApp. Recuperas ingresos que ya tenías.'},
+    {s:'fideliza', t:'Cumpleaños y opiniones',
+     n:'Mandarina te avisa qué clienta cumple años para felicitarla, y después de cada cita le manda una liga para calificarte con estrellas. Detalles chiquitos que hacen que regrese.'},
     {s:'insights', t:'Sabes qué sube y qué baja',
      n:'Tu mejor día, tu ticket promedio, el ranking de servicios y qué creció o se cayó vs. el mes pasado. Decides con datos, no con corazonadas.'},
     {s:'notif', t:'Tu equipo, coordinado',
-     n:'Si alguien mueve, reasigna o cancela una cita tuya, te llega por correo, WhatsApp y con la campana dentro de la app. Nadie se queda fuera del cambio.'}
+     n:'Si alguien mueve, reasigna o cancela una cita tuya, te llega como notificación push y con la campana dentro de la app. Nadie se queda fuera del cambio.'},
+    {s:'movil', t:'Vive en tu celular',
+     n:'Se instala como app: un ícono en tu pantalla, abre a pantalla completa y te manda notificaciones push —una reserva nueva, un cambio de cita— aunque la tengas cerrada. Sin bajar nada de una tienda.'}
   ];
   var cur=0;
   function buildDots(){
