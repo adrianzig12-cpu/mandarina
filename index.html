@@ -1048,6 +1048,107 @@
   .pfeats li.more{color:var(--ink-soft);font-weight:700}
   @media(max-width:860px){.pricing{grid-template-columns:1fr}}
 </style>
+
+<!-- ===== CÓMO FUNCIONA (2 guías animadas: contratar + reservar) ===== -->
+<style>
+  .howto{background:#fff}
+  .howto .htw{max-width:900px;margin:0 auto;text-align:center}
+  .howto .ht-grid{display:flex;gap:48px;justify-content:center;flex-wrap:wrap;margin-top:36px}
+  .howto .ht-item{display:flex;flex-direction:column;align-items:center}
+  .howto .ht-cap{margin-top:16px;color:#7a685c;font-size:.94rem;font-weight:600;max-width:212px;line-height:1.4}
+  /* --- animaciones scopeadas bajo .ht para no chocar con el landing --- */
+  .ht{--cream:#fdf3e9;--paper:#fff;--ink:#3a2a22;--mut:#9a8578;--bd:#efe0d0;--oj:#ee7a21;--ojd:#c85f10;--ojl:#fbe9d5;--green:#2e7d32}
+  .ht .htf{width:210px;height:428px;border-radius:34px;background:#0e0906;padding:9px;position:relative;box-shadow:0 22px 48px -18px rgba(0,0,0,.4),0 0 0 2px #3a2a1f}
+  .ht .htf::before{content:"";position:absolute;top:14px;left:50%;transform:translateX(-50%);width:78px;height:19px;background:#0e0906;border-radius:0 0 12px 12px;z-index:20}
+  .ht .htf-s{width:100%;height:100%;border-radius:26px;overflow:hidden;background:var(--cream);position:relative;color:var(--ink);font-family:system-ui,sans-serif;font-size:12px;text-align:left}
+  .ht .sb{height:28px;display:flex;align-items:flex-end;justify-content:space-between;padding:0 15px 3px;font-size:10px;font-weight:600;background:var(--paper)}
+  .ht .bd{padding:11px}
+  .ht .btn{display:block;text-align:center;background:var(--oj);color:#fff;font-weight:700;font-size:12px;padding:9px;border-radius:9px}
+  /* reservas */
+  .ht .hero{background:linear-gradient(160deg,var(--ojl),#fff);padding:12px;text-align:center;border-bottom:1px solid var(--bd)}
+  .ht .hero .bt{font-family:Georgia,serif;font-size:14px}.ht .hero .sm{font-size:9px;color:var(--mut)}
+  .ht .lbl{font-size:9px;color:var(--mut);text-transform:uppercase;letter-spacing:.05em;margin:3px 0 5px}
+  .ht .opts{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:9px}
+  .ht .op{font-size:10px;padding:6px 9px;border:1px solid var(--bd);border-radius:9px;background:var(--paper)}
+  .ht .c-serv{animation:htsa 10s infinite}.ht .c-dia{animation:htsb 10s infinite}.ht .c-hora{animation:htsc 10s infinite}
+  @keyframes htsa{0%,10%{}16%,100%{background:var(--oj);border-color:var(--oj);color:#fff}}
+  @keyframes htsb{0%,34%{}40%,100%{background:var(--oj);border-color:var(--oj);color:#fff}}
+  @keyframes htsc{0%,56%{}62%,100%{background:var(--oj);border-color:var(--oj);color:#fff}}
+  .ht .conf{background:var(--oj);color:#fff;text-align:center;font-weight:700;font-size:11px;padding:9px;border-radius:9px;opacity:.5;animation:htbtn 10s infinite}
+  @keyframes htbtn{0%,62%{opacity:.5}68%,100%{opacity:1}}
+  .ht .done{position:absolute;inset:0;background:rgba(253,243,233,.97);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;opacity:0;z-index:12;animation:htdone 10s infinite}
+  @keyframes htdone{0%,78%{opacity:0}86%,97%{opacity:1}100%{opacity:0}}
+  .ht .chk{width:46px;height:46px;border-radius:50%;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center;font-size:24px}
+  .ht .done b{font-family:Georgia,serif;font-size:14px}.ht .done span{font-size:10px;color:var(--mut)}
+  /* comprar */
+  .ht .scr{position:absolute;inset:0;top:28px;padding:12px;opacity:0;transform:translateX(30px)}
+  .ht .p1{animation:htp1 15s infinite}.ht .p2{animation:htp2 15s infinite}.ht .p3{animation:htp3 15s infinite}.ht .p4{animation:htp4 15s infinite}
+  @keyframes htp1{0%,2%{opacity:0;transform:translateX(30px)}6%,22%{opacity:1;transform:translateX(0)}26%,100%{opacity:0;transform:translateX(-30px)}}
+  @keyframes htp2{0%,26%{opacity:0;transform:translateX(30px)}30%,46%{opacity:1;transform:translateX(0)}50%,100%{opacity:0;transform:translateX(-30px)}}
+  @keyframes htp3{0%,50%{opacity:0;transform:translateX(30px)}54%,74%{opacity:1;transform:translateX(0)}78%,100%{opacity:0;transform:translateX(-30px)}}
+  @keyframes htp4{0%,78%{opacity:0;transform:translateX(30px)}84%,98%{opacity:1;transform:translateX(0)}100%{opacity:0}}
+  .ht .h{font-family:Georgia,serif;font-size:14px;text-align:center;margin:2px 0 3px}
+  .ht .sub{font-size:9px;color:var(--mut);text-align:center;margin-bottom:10px}
+  .ht .plan{background:var(--paper);border:1px solid var(--bd);border-radius:11px;padding:9px 10px;margin-bottom:7px}
+  .ht .plan.reco{border-color:var(--oj);box-shadow:0 0 0 2px var(--ojl)}
+  .ht .plan .nm{font-size:11px;font-weight:700}
+  .ht .plan .pr{font-size:14px;font-weight:800;color:var(--oj)}.ht .plan .pr span{font-size:9px;color:var(--mut);font-weight:400}
+  .ht .plan .tg{font-size:8px;font-weight:700;color:var(--green);background:#e6f4e7;padding:1px 6px;border-radius:99px;float:right}
+  .ht .fld{background:var(--paper);border:1px solid var(--bd);border-radius:8px;padding:8px 9px;margin-bottom:7px;font-size:10px;color:var(--ink)}
+  .ht .mp{background:var(--paper);border:1px solid var(--bd);border-radius:11px;padding:10px}
+  .ht .mp .cardnum{border:1px solid var(--bd);border-radius:7px;padding:8px;font-size:11px;letter-spacing:1px;margin-bottom:6px}
+  .ht .mp .row2{display:flex;gap:6px}.ht .mp .row2 .fld{flex:1;margin:0}
+  .ht .lock{font-size:8px;color:var(--mut);text-align:center;margin-top:8px}
+  .ht .listo{position:absolute;inset:0;top:28px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:16px;text-align:center}
+  .ht .lchk{width:52px;height:52px;border-radius:14px;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center;font-size:26px}
+  .ht .listo b{font-family:Georgia,serif;font-size:18px}.ht .listo span{font-size:10px;color:var(--mut);line-height:1.4}
+  @media(prefers-reduced-motion:reduce){.ht *{animation:none!important}}
+</style>
+<section id="comofunciona" class="pad howto">
+  <div class="htw">
+    <div class="eyebrow kicker" style="justify-content:center">Cómo funciona</div>
+    <h2 class="serif">Contratar y reservar, en <em>segundos</em>.</h2>
+    <div class="ht ht-grid">
+      <div class="ht-item">
+        <div class="htf"><div class="htf-s">
+          <div class="sb"><span>9:41</span><span>🔋</span></div>
+          <div class="scr p1"><div class="h">Elige tu plan</div><div class="sub">7 días gratis · IVA incluido</div>
+            <div class="plan"><span class="tg">7 días gratis</span><div class="nm">Ultra Básico</div><div class="pr">$350<span>/mes</span></div></div>
+            <div class="plan reco"><span class="tg">7 días gratis</span><div class="nm">Standard ⭐</div><div class="pr">$500<span>/mes</span></div></div>
+          </div>
+          <div class="scr p2"><div class="h">Crea tu estudio</div><div class="sub">Standard · 7 días gratis</div>
+            <div class="fld">Bella Lash Studio</div><div class="fld">bellalash<span style="color:var(--mut)">.usemandarina.com</span></div>
+            <div class="fld">ana@correo.com</div><div class="fld">WhatsApp · 55 4445 0644</div>
+            <div class="btn" style="margin-top:3px">Continuar al pago →</div>
+          </div>
+          <div class="scr p3"><div class="h">Tu tarjeta</div><div class="sub">Standard $500/mes · 7 días gratis</div>
+            <div class="mp"><div style="font-size:9px;color:var(--mut);margin-bottom:5px">💳 Tarjeta de crédito o débito</div>
+              <div class="cardnum">💳 4509 ·· ·· 3456</div><div class="row2"><div class="fld">11/30</div><div class="fld">•••</div></div></div>
+            <div class="btn" style="margin-top:8px">🔒 Empezar mi prueba gratis</div>
+            <div class="lock">Pago seguro con Mercado Pago · no se te cobra hoy</div>
+          </div>
+          <div class="listo p4"><div class="lchk">✓</div><b>¡Listo!</b><span>Tu prueba de 7 días quedó activa.<br>Entra a tu estudio con tu PIN.</span></div>
+        </div></div>
+        <div class="ht-cap">Contratar toma 2 minutos · 7 días gratis, sin cobro hoy</div>
+      </div>
+      <div class="ht-item">
+        <div class="htf"><div class="htf-s">
+          <div class="sb"><span>9:41</span><span>🔋</span></div>
+          <div class="hero"><div class="bt">Reserva en LasheStar</div><div class="sm">Elige y listo, sin llamar</div></div>
+          <div class="bd">
+            <div class="lbl">Servicio</div><div class="opts"><span class="op c-serv">Pestañas</span><span class="op">Alaciado</span><span class="op">Uñas</span></div>
+            <div class="lbl">Día</div><div class="opts"><span class="op">Lun 8</span><span class="op c-dia">Mar 9</span><span class="op">Mié 10</span></div>
+            <div class="lbl">Hora</div><div class="opts"><span class="op">10:00</span><span class="op c-hora">12:30</span><span class="op">16:00</span></div>
+            <div class="conf">Confirmar reserva</div>
+          </div>
+          <div class="done"><div class="chk">✓</div><b>¡Cita confirmada!</b><span>Te esperamos el Mar 9, 12:30</span></div>
+        </div></div>
+        <div class="ht-cap">Tu clienta reserva sola y la cita entra a tu agenda</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="planes" class="pad" style="background:linear-gradient(180deg,var(--cream),#fff)">
   <div class="wrap">
     <div class="center">
