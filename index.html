@@ -475,6 +475,7 @@
       <a href="#reservas">Reservas online</a>
       <a href="#valor">Qué hace por ti</a>
       <a href="#equipo">Tú y tu equipo</a>
+      <a href="#planes">Planes</a>
       <a class="btn btn-rose" target="_blank" rel="noopener"
          href="https://wa.me/525545450644?text=Hola%2C%20quiero%20una%20demo%20de%20Mandarina%20para%20mi%20estudio">Agenda una demo</a>
     </div>
@@ -989,6 +990,94 @@
         <div class="fact"><div class="fn">+45%</div><div class="fl">su mejor mes: el pico desde que ordenó la operación</div></div>
       </div>
       <p class="fnote">Estimaciones de LasheStar tras ordenar su operación con Mandarina; los resultados varían por estudio.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PLANES -->
+<style>
+  .pricing{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:48px;align-items:stretch}
+  .pcard{position:relative;display:flex;flex-direction:column;background:var(--paper);border:1.5px solid #EDD9C6;border-radius:20px;padding:26px 22px 24px;text-align:left}
+  .pcard.pop{border-color:var(--rose-deep);box-shadow:0 22px 50px -26px rgba(238,122,33,.5)}
+  .pcard .ptag{position:absolute;top:-13px;left:22px;display:flex;gap:8px}
+  .ptag span{font-size:11px;font-weight:800;padding:4px 11px;border-radius:999px}
+  .ptag .pop-b{background:var(--rose-deep);color:#fff}
+  .ptag .tri-b{background:#E4F2E5;color:#2E7D32}
+  .pcard h3{font-family:var(--serif);font-size:1.5rem;color:var(--ink);margin:6px 0 2px}
+  .pcard .pdesc{font-size:.82rem;color:var(--ink-soft);min-height:2.4em;margin-bottom:12px}
+  .pcard .pprice{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+  .pcard .pantes{text-decoration:line-through;color:var(--ink-faint);font-size:1.1rem}
+  .pcard .pmonto{font-size:2.1rem;font-weight:800;color:var(--rose-deep)}
+  .pcard .pper{font-size:.9rem;color:var(--ink-soft)}
+  .pcard .piva{font-size:.72rem;color:var(--ink-faint);margin:2px 0 16px}
+  .pcard .pbtn{display:block;text-align:center;background:var(--rose-deep);color:#fff;font-weight:700;
+    border-radius:999px;padding:12px;text-decoration:none;box-shadow:0 6px 18px rgba(238,122,33,.35)}
+  .pcard.pop .pbtn:hover,.pcard .pbtn:hover{filter:brightness(1.05)}
+  .pfeats{list-style:none;padding:0;margin:18px 0 0;display:flex;flex-direction:column;gap:9px}
+  .pfeats li{font-size:.86rem;color:var(--ink);padding-left:24px;position:relative;line-height:1.4}
+  .pfeats li::before{content:"✓";position:absolute;left:0;color:var(--rose-deep);font-weight:800}
+  .pfeats li.more{color:var(--ink-soft);font-weight:700}
+  @media(max-width:860px){.pricing{grid-template-columns:1fr}}
+</style>
+<section id="planes" class="pad" style="background:linear-gradient(180deg,var(--cream),#fff)">
+  <div class="wrap">
+    <div class="center">
+      <div class="eyebrow kicker">Planes</div>
+      <h2 class="big serif">Elige el plan de <em>tu estudio</em>.</h2>
+      <p class="sub"><b>7 días gratis</b> en todos · precios con IVA incluido · cancela cuando quieras.</p>
+    </div>
+    <div class="pricing">
+      <!-- Ultra Básico -->
+      <div class="pcard">
+        <div class="ptag"><span class="tri-b">7 días gratis</span></div>
+        <h3>Ultra Básico</h3>
+        <div class="pdesc">Para operar tu día completo desde el celular, tú sola.</div>
+        <div class="pprice"><span class="pmonto">$350</span><span class="pper">/mes</span></div>
+        <div class="piva">MXN · IVA incluido</div>
+        <a class="pbtn" href="https://app.usemandarina.com/registro?plan=ub_mensual">Empezar gratis →</a>
+        <ul class="pfeats">
+          <li>Agenda + día en cascada</li>
+          <li>Reservas online + pago en línea</li>
+          <li>Cobros y comisión de terminal</li>
+          <li>Clientas + ficha e historial</li>
+          <li>Servicios, gastos y fotos</li>
+          <li>Recordatorios y bloqueos</li>
+          <li>1 usuaria · con tu marca</li>
+        </ul>
+      </div>
+      <!-- Standard -->
+      <div class="pcard pop">
+        <div class="ptag"><span class="pop-b">Más popular</span><span class="tri-b">7 días gratis</span></div>
+        <h3>Standard</h3>
+        <div class="pdesc">Para crecer, retener y entender tu negocio, con tu equipo.</div>
+        <div class="pprice"><span class="pmonto">$500</span><span class="pper">/mes</span></div>
+        <div class="piva">MXN · IVA incluido</div>
+        <a class="pbtn" href="https://app.usemandarina.com/registro?plan=std_mensual">Empezar gratis →</a>
+        <ul class="pfeats">
+          <li class="more">Todo lo de Ultra Básico, y además:</li>
+          <li>Multi-usuaria con roles</li>
+          <li>Reactivación y retoque</li>
+          <li>Insights y análisis de cartera</li>
+          <li>Personal y comisiones</li>
+          <li>Avisos al equipo (push)</li>
+          <li>Waitlist y búsqueda global</li>
+          <li>Cumpleaños y encuestas</li>
+        </ul>
+      </div>
+      <!-- Standard anual -->
+      <div class="pcard">
+        <div class="ptag"><span class="tri-b">7 días gratis</span></div>
+        <h3>Standard anual</h3>
+        <div class="pdesc">El plan Standard completo, pagando un solo mes menos al año.</div>
+        <div class="pprice"><span class="pantes">$6,000</span><span class="pmonto">$5,400</span><span class="pper">/año</span></div>
+        <div class="piva">MXN · IVA incluido · $450/mes</div>
+        <a class="pbtn" href="https://app.usemandarina.com/registro?plan=std_anual">Empezar gratis →</a>
+        <ul class="pfeats">
+          <li class="more">Todo lo de Standard</li>
+          <li>Ahorra 10% ($450/mes)</li>
+          <li>Un solo pago al año</li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
