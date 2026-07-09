@@ -4,6 +4,24 @@
 <title>Mandarina · la app de tu estudio</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23fcefe0'/%3E%3Cpath d='M40 15c-1 3-4 5-7 5 0-3 3-6 7-5z' fill='%234a7c3a'/%3E%3Ccircle cx='32' cy='38' r='17' fill='%23ee7a21'/%3E%3Ccircle cx='26' cy='32' r='5' fill='%23f7a34d' opacity='.55'/%3E%3C/svg%3E">
 <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23fcefe0'/%3E%3Cpath d='M40 15c-1 3-4 5-7 5 0-3 3-6 7-5z' fill='%234a7c3a'/%3E%3Ccircle cx='32' cy='38' r='17' fill='%23ee7a21'/%3E%3Ccircle cx='26' cy='32' r='5' fill='%23f7a34d' opacity='.55'/%3E%3C/svg%3E">
+<script>document.documentElement.className+=' has-rv';setTimeout(function(){if(!window.__rvReady)document.documentElement.classList.remove('has-rv')},4000);</script>
+<style>
+  /* Scroll-reveal: los bloques aparecen al entrar a pantalla (se activa solo con
+     JS vía .has-rv → sin JS todo se ve). Respeta prefers-reduced-motion. */
+  .has-rv .center, .has-rv .pain, .has-rv .bcard, .has-rv .bt, .has-rv .pcard{
+    opacity:0; transform:translateY(24px);
+    transition:opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1), box-shadow .3s ease, border-color .2s ease;
+    will-change:opacity, transform;
+  }
+  .has-rv .center.rv-in, .has-rv .pain.rv-in, .has-rv .bcard.rv-in, .has-rv .bt.rv-in, .has-rv .pcard.rv-in{
+    opacity:1; transform:none;
+  }
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    .has-rv .center, .has-rv .pain, .has-rv .bcard, .has-rv .bt, .has-rv .pcard{opacity:1!important;transform:none!important;transition:none!important}
+  }
+</style>
 <style>
   :root{
     /* Identidad cítrica Mandarina (nombres de token reutilizados) */
@@ -812,7 +830,7 @@
                 <div class="money-note" style="background:#FBF0F4;color:#8A4A63">💬 <span>"Quedé feliz, súper detallista. Vuelvo en 3 semanas."</span></div></div>
               <div class="card"><div class="row"><div><div class="nm">Ale Fuentes</div><div class="meta">Cola de Sirena · Nao</div></div>
                 <span class="stars">★★★★<span class="off">★</span></span></div></div>
-              <div class="hint" style="padding-top:12px">Cada clienta recibe su liga para opinar; el promedio se ve en <b>Insights</b>.</div>
+              <div class="hint" style="padding-top:12px">Cada clienta recibe su liga para opinar; el promedio se ve en <b>Números</b>.</div>
             </div>
 
             <!-- APP EN TU CELULAR + PUSH -->
@@ -861,7 +879,7 @@
             <button class="nb on" id="nb-agenda" onclick="freeNav('agenda')"><span class="ic">📅</span>Agenda</button>
             <button class="nb" id="nb-cobros" onclick="freeNav('cobros')"><span class="ic">💰</span>Cobros</button>
             <button class="nb" id="nb-clientas" onclick="freeNav('clientas')"><span class="ic">👥</span>Clientas</button>
-            <button class="nb" id="nb-insights" onclick="freeNav('insights')"><span class="ic">📊</span>Insights</button>
+            <button class="nb" id="nb-insights" onclick="freeNav('insights')"><span class="ic">📊</span>Números</button>
             <button class="nb" id="nb-notif" onclick="freeNav('notif')"><span class="ic">🔔</span><span class="bdg">2</span>Más</button>
           </div>
 
@@ -930,7 +948,7 @@
         <p>Cada técnica en su columna y su color; las citas que se empalman se escalonan solas.</p>
         <div class="v-agenda"><span class="b1">Emily · Volumen Ruso</span><span class="b2">Regina · Híbrida</span><span class="b3">Dani · Retoque</span></div>
         <div class="out">→ Se acaban los choques de horario</div></div>
-      <div class="bt hero"><div class="vi">📊</div><h3>Insights del período</h3>
+      <div class="bt hero"><div class="vi">📊</div><h3>Números del período</h3>
         <p>Tu mejor día, tu ticket promedio y qué creció o se cayó —sin exportar nada a Excel.</p>
         <div class="v-chart"><i style="height:38%"></i><i style="height:60%"></i><i style="height:82%"></i><i style="height:100%"></i></div>
         <div class="out">→ Sabes qué empujar y qué soltar</div></div>
@@ -980,7 +998,7 @@
         <ul class="plist">
           <li><span class="yes">✓</span> Agenda completa con teléfonos y canal de captación</li>
           <li><span class="yes">✓</span> Cobros, gastos, comisiones y totales del día y del mes</li>
-          <li><span class="yes">✓</span> Insights, ranking de servicios y top de clientas por gasto</li>
+          <li><span class="yes">✓</span> Números, ranking de servicios y top de clientas por gasto</li>
           <li><span class="yes">✓</span> Confirmar y reactivar clientas por WhatsApp</li>
           <li><span class="yes">✓</span> Alta de personal, servicios y usuarios</li>
         </ul>
@@ -1187,10 +1205,10 @@
           <li class="more">Todo lo de Ultra Básico, y además:</li>
           <li>Multi-usuaria con roles</li>
           <li>Reactivación y retoque</li>
-          <li>Insights y análisis de cartera</li>
+          <li>Números y análisis de cartera</li>
           <li>Personal y comisiones</li>
           <li>Avisos al equipo (push)</li>
-          <li>Waitlist y búsqueda global</li>
+          <li>Lista de espera y búsqueda global</li>
           <li>Cumpleaños y encuestas</li>
         </ul>
       </div>
@@ -1260,7 +1278,7 @@
     agenda:{t:'Hoy <span class="star">✦</span>', s:'Sáb 4 jul · 6 citas · 3 confirmadas'},
     cobros:{t:'Cobros <span class="star">✦</span>', s:'Sáb 4 jul · corte del día'},
     clientas:{t:'Clientas <span class="star">✦</span>', s:'269 registradas'},
-    insights:{t:'Insights <span class="star">✦</span>', s:'Este mes · al día de hoy'},
+    insights:{t:'Números <span class="star">✦</span>', s:'Este mes · al día de hoy'},
     notif:{t:'Novedades <span class="star">✦</span>', s:'Cambios en tus citas'},
     reservar:{t:'Reservas <span class="star">✦</span>', s:'Tu liga pública · en vivo'},
     fideliza:{t:'Fideliza <span class="star">✦</span>', s:'Cumpleaños y opiniones'},
@@ -1407,4 +1425,23 @@
     }
   })();
   buildDots(); tourStep(0);
+</script>
+<script>
+(function(){
+  try{
+    if(!('IntersectionObserver' in window)){ document.documentElement.classList.remove('has-rv'); return; }
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('rv-in'); io.unobserve(e.target); } });
+    },{ rootMargin:'0px 0px -8% 0px', threshold:0.08 });
+    var pid=0;
+    document.querySelectorAll('.center,.pain,.bcard,.bt,.pcard').forEach(function(el){
+      var p=el.parentNode;
+      if(p.__rvid==null){ p.__rvid=++pid; p.__rvn=0; }
+      el.style.transitionDelay=Math.min(p.__rvn,6)*0.06+'s';  // stagger entre hermanos
+      p.__rvn++;
+      io.observe(el);
+    });
+    window.__rvReady=true;
+  }catch(e){ document.documentElement.classList.remove('has-rv'); }
+})();
 </script>
