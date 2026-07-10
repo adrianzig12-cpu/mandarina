@@ -49,6 +49,13 @@
   .serif{font-family:var(--serif)}
   em{font-style:italic}
   :focus-visible{outline:2px solid var(--rose-deep);outline-offset:3px;border-radius:4px}
+  /* Sin cuadro azul al tocar (Android/iOS) y sin selección accidental en la UI */
+  html{-webkit-tap-highlight-color:transparent}
+  button,a,.btn,.nav,.nav-drawer,.brand,.eyebrow,label,[onclick]{
+    -webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent}
+  /* Logo mandarina junto al nombre */
+  .brand-logo{width:26px;height:26px;flex:0 0 26px;display:block}
+  .nav-drawer-brand .brand-logo{display:inline-block;width:23px;height:23px;vertical-align:-5px;margin-right:5px}
 
   /* ---------- NAV ---------- */
   .nav{position:sticky;top:0;z-index:50;background:rgba(36,24,18,.82);
@@ -502,7 +509,7 @@
 <nav class="nav">
   <div class="wrap">
     <button class="nav-burger" aria-label="Menú" onclick="document.body.classList.toggle('nav-open')">☰</button>
-    <div class="brand"><span class="star">✦</span> Mandarina</div>
+    <div class="brand"><svg class="brand-logo"><use href="#mandfruit"/></svg> Mandarina</div>
     <div class="nav-links">
       <a href="#problema">El día en tu estudio</a>
       <a href="#tour">Recorrido</a>
@@ -518,7 +525,7 @@
 <!-- Menú lateral móvil (hamburguesa) -->
 <div class="nav-scrim" onclick="document.body.classList.remove('nav-open')"></div>
 <aside class="nav-drawer" onclick="if(event.target.tagName==='A')document.body.classList.remove('nav-open')">
-  <div class="nav-drawer-brand"><span class="star">✦</span> Mandarina</div>
+  <div class="nav-drawer-brand"><svg class="brand-logo"><use href="#mandfruit"/></svg>Mandarina</div>
   <a href="#problema">El día en tu estudio</a>
   <a href="#tour">Recorrido</a>
   <a href="#reservas">Reservas online</a>
@@ -1262,7 +1269,7 @@
 <footer>
   <div class="wrap">
     <div class="foot-l">
-      <div class="brand"><span class="star" style="color:var(--gold)">✦</span> Mandarina</div>
+      <div class="brand"><svg class="brand-logo"><use href="#mandfruit"/></svg> Mandarina</div>
       <a class="social" href="https://www.instagram.com/usemandarinalat/" target="_blank" rel="noopener" aria-label="Instagram @usemandarinalat">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="2" width="20" height="20" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.6" cy="6.4" r="1.1" fill="currentColor" stroke="none"/></svg>
         @usemandarinalat
