@@ -57,10 +57,10 @@
   .serif{font-family:var(--serif)}
   em{font-style:italic}
   :focus-visible{outline:2px solid var(--rose-deep);outline-offset:3px;border-radius:4px}
-  /* Sin cuadro azul al tocar (Android/iOS) y sin selección accidental en la UI */
+  /* Página tipo app: sin cuadro azul al tocar y SIN selección de texto en toda la
+     página (mata el "Presiona para ver resultados de búsqueda" del navegador). */
   html{-webkit-tap-highlight-color:transparent}
-  button,a,.btn,.nav,.nav-drawer,.brand,.eyebrow,label,[onclick]{
-    -webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent}
+  body{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}
   /* Logo mandarina junto al nombre */
   .brand-logo{width:26px;height:26px;flex:0 0 26px;display:block}
   .nav-drawer-brand .brand-logo{display:inline-block;width:23px;height:23px;vertical-align:-5px;margin-right:5px}
