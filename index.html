@@ -1218,7 +1218,7 @@
         <div class="ptag"><span class="tri-b">7 días gratis</span></div>
         <h3>Ultra Básico</h3>
         <div class="pdesc">Para operar tu día completo desde el celular, tú mismo.</div>
-        <div class="pprice"><span class="pmonto">$350</span><span class="pper">/mes</span></div>
+        <div class="pprice"><span class="pmonto" id="p-ub">$350</span><span class="pper">/mes</span></div>
         <div class="piva">MXN · IVA incluido</div>
         <a class="pbtn" href="https://app.usemandarina.com/registro?plan=ub_mensual">Empezar gratis →</a>
         <ul class="pfeats">
@@ -1236,7 +1236,7 @@
         <div class="ptag"><span class="pop-b">Más popular</span><span class="tri-b">7 días gratis</span></div>
         <h3>Standard</h3>
         <div class="pdesc">Para crecer, retener y entender tu negocio, con tu equipo.</div>
-        <div class="pprice"><span class="pmonto">$500</span><span class="pper">/mes</span></div>
+        <div class="pprice"><span class="pmonto" id="p-std">$500</span><span class="pper">/mes</span></div>
         <div class="piva">MXN · IVA incluido</div>
         <a class="pbtn" href="https://app.usemandarina.com/registro?plan=std_mensual">Empezar gratis →</a>
         <ul class="pfeats">
@@ -1255,12 +1255,12 @@
         <div class="ptag"><span class="tri-b">7 días gratis</span></div>
         <h3>Standard anual</h3>
         <div class="pdesc">El plan Standard completo, pagando dos meses menos al año.</div>
-        <div class="pprice"><span class="pantes">$6,000</span><span class="pmonto">$5,000</span><span class="pper">/año</span></div>
-        <div class="piva">MXN · IVA incluido · ~$417/mes</div>
+        <div class="pprice"><span class="pantes" id="p-anual-antes">$6,000</span><span class="pmonto" id="p-anual">$5,000</span><span class="pper">/año</span></div>
+        <div class="piva" id="p-anual-iva">MXN · IVA incluido · ~$417/mes</div>
         <a class="pbtn" href="https://app.usemandarina.com/registro?plan=std_anual">Empezar gratis →</a>
         <ul class="pfeats">
           <li class="more">Todo lo de Standard</li>
-          <li>2 meses gratis (~$417/mes)</li>
+          <li id="p-anual-feat">2 meses gratis (~$417/mes)</li>
           <li>Un solo pago al año</li>
         </ul>
       </div>
@@ -1481,5 +1481,23 @@
     });
     window.__rvReady=true;
   }catch(e){ document.documentElement.classList.remove('has-rv'); }
+})();
+</script>
+
+<!-- Precios en vivo: los jala de la app (fuente única = BD, editable en /admin). -->
+<script>
+(function(){
+  var money=function(n){return '$'+Math.round(n).toLocaleString('es-MX');};
+  var set=function(id,txt){var e=document.getElementById(id);if(e)e.textContent=txt;};
+  fetch('https://app.usemandarina.com/api/precios').then(function(r){return r.json();}).then(function(p){
+    if(!p||typeof p.ub_mensual!=='number')return;
+    set('p-ub', money(p.ub_mensual));
+    set('p-std', money(p.std_mensual));
+    set('p-anual', money(p.std_anual));
+    set('p-anual-antes', money(p.std_mensual*12));
+    var eq=Math.round(p.std_anual/12);
+    set('p-anual-iva', 'MXN · IVA incluido · ~'+money(eq)+'/mes');
+    set('p-anual-feat', '2 meses gratis (~'+money(eq)+'/mes)');
+  }).catch(function(){});
 })();
 </script>
