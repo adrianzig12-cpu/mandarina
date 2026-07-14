@@ -652,7 +652,7 @@
         pain3h:'Clientas que no vuelven',
         tourSub:'Todo esto ya existe y corre en un estudio real. Dale <b>Siguiente</b> y te llevamos paso a paso.',
         permAdminH:'👑 Nao / Jess',permAdmin1:'Números, ranking de servicios y top de clientas por gasto',permAdmin2:'Confirmar y reactivar clientas por WhatsApp',
-        permEmpH:'💫 Moni',permEmp1:'Ve fotos antes/después para preparar el retoque',permEmp2:'No ve teléfonos de las clientas',
+        permEmpH:'💫 Moni',permEmp1:'Ve fotos antes/después para preparar el retoque',permEmp2:'<span class="no">✕</span> No ve teléfonos de las clientas',
         rsvcNm:'Volumen Ruso',rsvcNotif:'<b>Nueva reserva online:</b> Emily · Volumen Ruso · hoy 12:00.',
         ctaEye:'¿La probamos en tu estudio?',ctaSub:'En 15 minutos ves cómo se vería tu día en Mandarina. Si te late, la dejamos lista con el nombre de tu estudio.',
         planesH2:'Elige el plan de <em>tu estudio</em>.',
@@ -666,7 +666,7 @@
         pain3h:'Pacientes que no vuelven',
         tourSub:'Todo esto ya existe y corre en un consultorio real. Dale <b>Siguiente</b> y te llevamos paso a paso.',
         permAdminH:'👑 Dra. Ana',permAdmin1:'Números, ranking de sesiones y top de pacientes por gasto',permAdmin2:'Confirmar y reactivar pacientes por WhatsApp',
-        permEmpH:'💫 Recepción',permEmp1:'Ve el expediente para preparar la sesión',permEmp2:'No ve teléfonos de los pacientes',
+        permEmpH:'💫 Recepción',permEmp1:'Ve el expediente para preparar la sesión',permEmp2:'<span class="yes">✓</span> Ve teléfonos para contactar a los pacientes',
         rsvcNm:'Terapia individual',rsvcNotif:'<b>Nueva reserva online:</b> María · Terapia individual · hoy 12:00.',
         ctaEye:'¿La probamos en tu consultorio?',ctaSub:'En 15 minutos ves cómo se vería tu día en Mandarina. Si te late, la dejamos lista con el nombre de tu consultorio.',
         planesH2:'Elige el plan de <em>tu consultorio</em>.',
@@ -680,7 +680,7 @@
         pain3h:'Pacientes que no vuelven',
         tourSub:'Todo esto ya existe y corre en una clínica real. Dale <b>Siguiente</b> y te llevamos paso a paso.',
         permAdminH:'👑 Dr. Álex',permAdmin1:'Números, ranking de tratamientos y top de pacientes por gasto',permAdmin2:'Confirmar y reactivar pacientes por WhatsApp',
-        permEmpH:'💫 Recepción',permEmp1:'Ve el expediente para preparar el tratamiento',permEmp2:'No ve teléfonos de los pacientes',
+        permEmpH:'💫 Recepción',permEmp1:'Ve el expediente para preparar el tratamiento',permEmp2:'<span class="yes">✓</span> Ve teléfonos para contactar a los pacientes',
         rsvcNm:'Limpieza dental',rsvcNotif:'<b>Nueva reserva online:</b> María · Limpieza dental · hoy 12:00.',
         ctaEye:'¿La probamos en tu clínica?',ctaSub:'En 15 minutos ves cómo se vería tu día en Mandarina. Si te late, la dejamos lista con el nombre de tu clínica.',
         planesH2:'Elige el plan de <em>tu clínica</em>.',
@@ -694,7 +694,7 @@
         pain3h:'Clientes que no vuelven',
         tourSub:'Todo esto ya existe y corre en un negocio real. Dale <b>Siguiente</b> y te llevamos paso a paso.',
         permAdminH:'👑 Dueño',permAdmin1:'Números, ranking de servicios y top de clientes por gasto',permAdmin2:'Confirmar y reactivar clientes por WhatsApp',
-        permEmpH:'💫 Recepción',permEmp1:'Ve la ficha para preparar la cita',permEmp2:'No ve teléfonos de los clientes',
+        permEmpH:'💫 Recepción',permEmp1:'Ve la ficha para preparar la cita',permEmp2:'<span class="no">✕</span> No ve teléfonos de los clientes',
         rsvcNm:'Sesión',rsvcNotif:'<b>Nueva reserva online:</b> María · Sesión · hoy 12:00.',
         ctaEye:'¿La probamos en tu negocio?',ctaSub:'En 15 minutos ves cómo se vería tu día en Mandarina. Si te late, la dejamos lista con el nombre de tu negocio.',
         planesH2:'Elige el plan de <em>tu negocio</em>.',
@@ -1139,8 +1139,8 @@
       <div class="bt"><div class="vi">💖</div><h3>Reactivar clientas</h3>
         <p>Te dice quién lleva 60+ días sin venir. Un toque y vuelve por WhatsApp.</p>
         <div class="out">→ Recuperas ingresos que ya tenías</div></div>
-      <div class="bt"><div class="vi">🔄</div><h3>Recordatorio de seguimiento</h3>
-        <p>Sabe cuándo le toca volver a cada quien (retoque, control o seguimiento) y te lo recuerda.</p>
+      <div class="bt"><div class="vi">🔄</div><h3>Recordatorio de retoque</h3>
+        <p>Sabe cuándo le toca su retoque a cada quien y te lo recuerda a tiempo.</p>
         <div class="out">→ Vuelven a tiempo</div></div>
       <div class="bt"><div class="vi">💳</div><h3>Anticipos y pago en línea</h3>
         <p>Cobra una seña o el total al reservar —tarjeta o transferencia, 0% de comisión.</p>
@@ -1199,7 +1199,7 @@
         <ul class="plist">
           <li><span class="yes">✓</span> Agenda completa: agenda y edita citas para todo el equipo</li>
           <li><span class="yes">✓</span> <span data-g="permEmp1">Ve fotos antes/después para preparar el retoque</span></li>
-          <li><span class="no">✕</span> <span data-g="permEmp2">No ve teléfonos de las clientas</span></li>
+          <li data-g="permEmp2"><span class="no">✕</span> No ve teléfonos de las clientas</li>
           <li><span class="no">✕</span> No ve cobros, totales ni finanzas</li>
           <li><span class="no">✕</span> No entra a gastos, personal ni usuarios</li>
         </ul>
@@ -1639,7 +1639,7 @@
   // ===== Motor de contenido PROFUNDO por giro (recorrido + mockups) =====
   // Reemplaza tokens del texto belleza (baseline) por el vocabulario del giro elegido.
   var SRC=[
-    ['Alaciado Semipermanente','sA'],['Volumen Ruso','sV'],['Técnica Híbrida','sH'],['Cola de Sirena','sC'],['Mega Volumen','sM'],
+    ['Alaciado Semipermanente','sA'],['Volumen Ruso','sV'],['Técnica Híbrida','sH'],['Cola de Sirena','sC'],['Mega Volumen','sM'],['Híbrida','sH'],
     ['Retoque pestañas','sR'],['Retoque','sR'],['retoques','sRp'],['retoque','sRl'],
     ['Emily Ramírez','nA'],['Regina Solís','nB'],['Dani Ortega','nC'],['Paulina Vega','nD'],
     ['Regina','fB'],['Emily','fA'],['Carmen','fE'],['Paulina','fD'],['Dani','fC'],
@@ -1664,6 +1664,7 @@
   window.__giroDeep=function(giro){ window.__giro=giro;
     tokWalk(document.getElementById('ts-scroll'));      // pantallas del recorrido
     tokWalk(document.getElementById('comofunciona'));   // mockup de registro + reserva
+    tokWalk(document.getElementById('valor'));          // "Cada función responde…" (tarjetas + mini-mockups)
     if(typeof tourStep==='function')tourStep(cur);       // re-render títulos + narración con giroText
   };
 
