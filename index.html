@@ -1,7 +1,7 @@
 <!doctype html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Mandarina · la app de tu estudio</title>
+<title>Mandarina · el sistema de tu negocio de citas</title>
 <!-- Google Analytics 4 (GA4) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-RQJZZY1LEK"></script>
 <script>
@@ -110,8 +110,24 @@
   .hero h1{font-family:var(--serif);font-size:clamp(2.6rem,6vw,4.3rem);line-height:1.02;
     letter-spacing:-.01em}
   .hero h1 em{color:var(--rose);font-weight:400}
-  .hero .lede{margin-top:24px;font-size:1.16rem;color:#EEDDCD;max-width:36ch}
-  .hero-cta{margin-top:34px;display:flex;gap:14px;flex-wrap:wrap}
+  /* Palabra rotativa (clientas → pacientes → clientes): comunica "se adapta a tu giro". */
+  .hero h1 .rot{color:var(--rose-deep);font-style:italic;font-weight:400;display:inline-block;
+    transition:opacity .3s ease,transform .3s ease}
+  .hero h1 .rot.out{opacity:0;transform:translateY(-.28em)}
+  @media(prefers-reduced-motion:reduce){.hero h1 .rot{transition:none}}
+  .hero .lede{margin-top:24px;font-size:1.16rem;color:#EEDDCD;max-width:40ch}
+  .hero .lede b{color:#fff;font-weight:600}
+  .hero-giros{margin-top:22px;display:flex;flex-wrap:wrap;gap:9px;align-items:center}
+  .hg-label{font-size:.8rem;font-weight:700;letter-spacing:.5px;color:var(--gold);text-transform:uppercase;margin-right:4px}
+  .giro-chip{font-size:.86rem;font-weight:600;color:#F3E7DE;background:#ffffff14;font-family:var(--sans);
+    border:1px solid #ffffff2b;border-radius:999px;padding:7px 14px;white-space:nowrap;cursor:pointer;
+    transition:background .2s,border-color .2s,transform .12s,color .2s}
+  .giro-chip:hover{background:#ffffff26;transform:translateY(-1px)}
+  .giro-chip.on{background:var(--rose-deep);border-color:var(--rose-deep);color:#fff}
+  .giro-pick{transition:transform .15s ease,box-shadow .2s ease}
+  .giro-pick:hover{transform:translateY(-3px);box-shadow:0 14px 34px rgba(58,36,24,.14)}
+  .giro-pick-cta{display:inline-block;margin-top:12px;font-weight:700;font-size:.86rem;color:var(--rose-deep)}
+  .hero-cta{margin-top:30px;display:flex;gap:14px;flex-wrap:wrap}
   .hero-freebie{margin-top:14px;font-size:.9rem;color:#EEDDCD}
   .hero-freebie a{color:#F7A34D;text-decoration:underline;text-underline-offset:2px}
   .trust{margin-top:30px;display:flex;gap:22px;flex-wrap:wrap;font-size:.82rem;color:#CBB4A2}
@@ -521,14 +537,14 @@
     <button class="nav-burger" aria-label="Menú" onclick="document.body.classList.toggle('nav-open')">☰</button>
     <div class="brand"><svg class="brand-logo"><use href="#mandfruit"/></svg> Mandarina</div>
     <div class="nav-links">
-      <a href="#problema">El día en tu estudio</a>
+      <a href="#giros">¿Para quién?</a>
+      <a href="#problema">El problema</a>
       <a href="#tour">Recorrido</a>
-      <a href="#reservas">Reservas online</a>
-      <a href="#valor">Qué hace por ti</a>
-      <a href="#equipo">Tú y tu equipo</a>
+      <a href="#reservas">Reservas</a>
+      <a href="#valor">Funciones</a>
       <a href="#planes">Planes</a>
       <a class="btn btn-rose" target="_blank" rel="noopener"
-         href="https://wa.me/525545450644?text=Hola%2C%20quiero%20una%20demo%20de%20Mandarina%20para%20mi%20estudio">Agenda una demo</a>
+         href="https://wa.me/525545450644?text=Hola%2C%20quiero%20una%20demo%20de%20Mandarina%20para%20mi%20negocio">Agenda una demo</a>
     </div>
   </div>
 </nav>
@@ -536,23 +552,31 @@
 <div class="nav-scrim" onclick="document.body.classList.remove('nav-open')"></div>
 <aside class="nav-drawer" onclick="if(event.target.tagName==='A')document.body.classList.remove('nav-open')">
   <div class="nav-drawer-brand"><svg class="brand-logo"><use href="#mandfruit"/></svg>Mandarina</div>
-  <a href="#problema">El día en tu estudio</a>
+  <a href="#giros">¿Para quién?</a>
+  <a href="#problema">El problema</a>
   <a href="#tour">Recorrido</a>
-  <a href="#reservas">Reservas online</a>
-  <a href="#valor">Qué hace por ti</a>
-  <a href="#equipo">Tú y tu equipo</a>
+  <a href="#reservas">Reservas</a>
+  <a href="#valor">Funciones</a>
+  <a href="#equipo">Equipo</a>
   <a href="#planes">Planes</a>
   <a class="btn btn-rose" target="_blank" rel="noopener"
-     href="https://wa.me/525545450644?text=Hola%2C%20quiero%20una%20demo%20de%20Mandarina%20para%20mi%20estudio">Agenda una demo</a>
+     href="https://wa.me/525545450644?text=Hola%2C%20quiero%20una%20demo%20de%20Mandarina%20para%20mi%20negocio">Agenda una demo</a>
 </aside>
 
 <!-- HERO -->
 <header class="hero">
   <div class="wrap">
     <div>
-      <div class="eyebrow">La app de tu estudio · pestañas · uñas · alaciados</div>
-      <h1 class="serif">Tu agenda, tus cobros y tus clientas <em>en un solo lugar</em>, desde el celular.</h1>
-      <p class="lede">Con Mandarina, un estudio real administra su día completo desde el celular. La misma app puede llevar el nombre y los colores del tuyo.</p>
+      <div class="eyebrow">El sistema de tu negocio de citas · estudios · consultorios · terapia · dental</div>
+      <h1 class="serif">Tu agenda, tus cobros y tus <span class="rot" id="rotWord">clientas</span> <em>en un solo lugar</em>, desde el celular.</h1>
+      <p class="lede">Nació en un estudio de belleza; hoy es el sistema de cualquier negocio de cita. Lleva tu día completo —agenda, cobros, reservas con anticipo y expediente— y <b>habla el idioma de tu giro.</b></p>
+      <div class="hero-giros" role="group" aria-label="Elige tu giro y mira cómo se adapta">
+        <span class="hg-label">Elige tu giro →</span>
+        <button type="button" class="giro-chip" onclick="setGiro('belleza',this)">💄 Belleza</button>
+        <button type="button" class="giro-chip" onclick="setGiro('consultorio',this)">🧠 Consultorio</button>
+        <button type="button" class="giro-chip" onclick="setGiro('dental',this)">🦷 Dental</button>
+        <button type="button" class="giro-chip" onclick="setGiro('otro',this)">✨ Otro</button>
+      </div>
       <div class="hero-cta">
         <a class="btn btn-rose" href="https://app.usemandarina.com/registro">✨ Empieza tu prueba gratis</a>
         <button class="btn btn-ghost" onclick="startTour()">▶ Ver recorrido guiado</button>
@@ -574,7 +598,7 @@
             <div class="sub">Sáb 4 jul · 6 citas · 3 confirmadas</div>
           </div>
           <div class="scroller">
-            <div class="chips">
+            <div class="chips" data-team>
               <span class="chip on">Todas</span><span class="chip">Nao</span>
               <span class="chip">Jess</span><span class="chip">Moni</span>
             </div>
@@ -586,16 +610,16 @@
               <div class="hourrow"><span class="h">13:00</span></div>
               <div class="hourrow"><span class="h">14:00</span></div>
               <div class="track">
-                <div class="appt a-blue" style="top:2px;height:74px;left:0;right:0">
+                <div class="appt a-blue" data-gi="0" style="top:2px;height:74px;left:0;right:0">
                   <div class="who">Jess · Regina</div><div class="svc">Técnica Híbrida</div><div class="tm">9:00–10:30</div>
                 </div>
-                <div class="appt a-gold" style="top:54px;height:74px;left:16px;right:0;z-index:2">
+                <div class="appt a-gold" data-gi="1" style="top:54px;height:74px;left:16px;right:0;z-index:2">
                   <div class="who">Nao · Ale</div><div class="svc">Cola de Sirena</div><div class="tm">10:00–11:30</div>
                 </div>
-                <div class="appt a-tang" style="top:106px;height:74px;left:34px;right:0;z-index:3">
+                <div class="appt a-tang" data-gi="2" style="top:106px;height:74px;left:34px;right:0;z-index:3">
                   <div class="who">Nao · Emily <span class="cam">📷</span></div><div class="svc">Volumen Ruso</div><div class="tm">11:00–12:30</div>
                 </div>
-                <div class="appt a-green" style="top:196px;height:44px;left:0;right:0">
+                <div class="appt a-green" data-gi="3" style="top:196px;height:44px;left:0;right:0">
                   <div class="who">Moni · Dani</div><div class="tm">12:30–13:30 · Retoque</div>
                 </div>
               </div>
@@ -607,19 +631,155 @@
   </div>
 </header>
 
+<script>
+  // Hero: palabra rotativa (clientas→pacientes→clientes) + selector de giro que
+  // RECOLOREA toda la página y fija el vocabulario. Demuestra la adaptabilidad real.
+  (function(){
+    var THEMES={
+      belleza:{d:'#EE7A21',l:'#F79A4D',s:'#FCE8D3',w:'clientas'},
+      consultorio:{d:'#2E9E9E',l:'#56C4C4',s:'#DAF0F0',w:'pacientes'},
+      dental:{d:'#2E6FA6',l:'#5B93C4',s:'#DCEAF5',w:'pacientes'},
+      otro:{d:'#7E5BD0',l:'#A084DE',s:'#EAE2F7',w:'clientes'}
+    };
+    // Copy + contenido de mockups por giro: al elegir giro, el texto que decía "estudio"
+    // y las citas del celular del hero cambian → se siente hecho para ese giro.
+    var msub=function(n){return 'Elige la identidad de tu '+n+' y mira la página entera tomar ese color. El que elijas <b>te acompaña en el recorrido de aquí abajo</b> —así vas a ver tu día a día, ya con tus colores.';};
+    var COPY={
+      belleza:{
+        marcaEye:'Con la marca de tu estudio',marcaH2:'Primero, vístela con el <em>diseño de tu estudio.</em>',marcaSub:msub('estudio'),
+        probEye:'El día en tu estudio, hoy',
+        pain1:'Dos clientas a la misma hora con la misma técnica. Te enteras cuando ya llegaron.',
+        pain3h:'Clientas que no vuelven',
+        tourSub:'Todo esto ya existe y corre en un estudio real. Dale <b>Siguiente</b> y te llevamos paso a paso.',
+        permAdminH:'👑 Nao / Jess',permAdmin1:'Números, ranking de servicios y top de clientas por gasto',permAdmin2:'Confirmar y reactivar clientas por WhatsApp',
+        permEmpH:'💫 Moni',permEmp1:'Ve fotos antes/después para preparar el retoque',permEmp2:'No ve teléfonos de las clientas',
+        rsvcNm:'Volumen Ruso',rsvcNotif:'<b>Nueva reserva online:</b> Emily · Volumen Ruso · hoy 12:00.',
+        ctaEye:'¿La probamos en tu estudio?',ctaSub:'En 15 minutos ves cómo se vería tu día en Mandarina. Si te late, la dejamos lista con el nombre de tu estudio.',
+        planesH2:'Elige el plan de <em>tu estudio</em>.',
+        team:['Nao','Jess','Moni'],
+        bars:['Emily · Volumen','Regina · Híbrida','Ale · Cola Sirena','Dani · Retoque'],
+        appts:[{who:'Jess · Regina',svc:'Técnica Híbrida'},{who:'Nao · Ale',svc:'Cola de Sirena'},{who:'Nao · Emily <span class="cam">📷</span>',svc:'Volumen Ruso'},{who:'Moni · Dani',tm:'12:30–13:30 · Retoque'},{who:'Jess · Carmen',svc:'Alaciado Semipermanente'}]},
+      consultorio:{
+        marcaEye:'Con la marca de tu consultorio',marcaH2:'Primero, vístela con el <em>diseño de tu consultorio.</em>',marcaSub:msub('consultorio'),
+        probEye:'El día en tu consultorio, hoy',
+        pain1:'Dos pacientes a la misma hora con el mismo especialista. Te enteras cuando ya llegaron.',
+        pain3h:'Pacientes que no vuelven',
+        tourSub:'Todo esto ya existe y corre en un consultorio real. Dale <b>Siguiente</b> y te llevamos paso a paso.',
+        permAdminH:'👑 Dra. Ana',permAdmin1:'Números, ranking de sesiones y top de pacientes por gasto',permAdmin2:'Confirmar y reactivar pacientes por WhatsApp',
+        permEmpH:'💫 Recepción',permEmp1:'Ve el expediente para preparar la sesión',permEmp2:'No ve teléfonos de los pacientes',
+        rsvcNm:'Terapia individual',rsvcNotif:'<b>Nueva reserva online:</b> María · Terapia individual · hoy 12:00.',
+        ctaEye:'¿La probamos en tu consultorio?',ctaSub:'En 15 minutos ves cómo se vería tu día en Mandarina. Si te late, la dejamos lista con el nombre de tu consultorio.',
+        planesH2:'Elige el plan de <em>tu consultorio</em>.',
+        team:['Ana','Sofía','Luis'],
+        bars:['María · Terapia','Diego · Consulta','Ana · Pareja','Luis · Control'],
+        appts:[{who:'Ana · María',svc:'Terapia individual'},{who:'Sofía · Diego',svc:'Primera consulta'},{who:'Ana · Emily',svc:'Sesión de pareja'},{who:'Luis · Dani',tm:'12:30–13:30 · Seguimiento'},{who:'Sofía · Carmen',svc:'Consulta de control'}]},
+      dental:{
+        marcaEye:'Con la marca de tu clínica',marcaH2:'Primero, vístela con el <em>diseño de tu clínica.</em>',marcaSub:msub('clínica'),
+        probEye:'El día en tu clínica, hoy',
+        pain1:'Dos pacientes a la misma hora en el mismo sillón. Te enteras cuando ya llegaron.',
+        pain3h:'Pacientes que no vuelven',
+        tourSub:'Todo esto ya existe y corre en una clínica real. Dale <b>Siguiente</b> y te llevamos paso a paso.',
+        permAdminH:'👑 Dr. Álex',permAdmin1:'Números, ranking de tratamientos y top de pacientes por gasto',permAdmin2:'Confirmar y reactivar pacientes por WhatsApp',
+        permEmpH:'💫 Recepción',permEmp1:'Ve el expediente para preparar el tratamiento',permEmp2:'No ve teléfonos de los pacientes',
+        rsvcNm:'Limpieza dental',rsvcNotif:'<b>Nueva reserva online:</b> María · Limpieza dental · hoy 12:00.',
+        ctaEye:'¿La probamos en tu clínica?',ctaSub:'En 15 minutos ves cómo se vería tu día en Mandarina. Si te late, la dejamos lista con el nombre de tu clínica.',
+        planesH2:'Elige el plan de <em>tu clínica</em>.',
+        team:['Dr. Álex','Sofía','Ana'],
+        bars:['María · Limpieza','Diego · Resina','Ana · Revisión','Luis · Blanqueo'],
+        appts:[{who:'Álex · María',svc:'Limpieza dental'},{who:'Sofía · Diego',svc:'Resina'},{who:'Álex · Emily',svc:'Extracción'},{who:'Ana · Dani',tm:'12:30–13:30 · Revisión'},{who:'Sofía · Carmen',svc:'Blanqueamiento'}]},
+      otro:{
+        marcaEye:'Con la marca de tu negocio',marcaH2:'Primero, vístela con el <em>diseño de tu negocio.</em>',marcaSub:msub('negocio'),
+        probEye:'El día en tu negocio, hoy',
+        pain1:'Dos clientes a la misma hora con el mismo profesional. Te enteras cuando ya llegaron.',
+        pain3h:'Clientes que no vuelven',
+        tourSub:'Todo esto ya existe y corre en un negocio real. Dale <b>Siguiente</b> y te llevamos paso a paso.',
+        permAdminH:'👑 Dueño',permAdmin1:'Números, ranking de servicios y top de clientes por gasto',permAdmin2:'Confirmar y reactivar clientes por WhatsApp',
+        permEmpH:'💫 Recepción',permEmp1:'Ve la ficha para preparar la cita',permEmp2:'No ve teléfonos de los clientes',
+        rsvcNm:'Sesión',rsvcNotif:'<b>Nueva reserva online:</b> María · Sesión · hoy 12:00.',
+        ctaEye:'¿La probamos en tu negocio?',ctaSub:'En 15 minutos ves cómo se vería tu día en Mandarina. Si te late, la dejamos lista con el nombre de tu negocio.',
+        planesH2:'Elige el plan de <em>tu negocio</em>.',
+        team:['Ale','Sam','Cris'],
+        bars:['María · Sesión','Diego · Cita','Ana · Consulta','Luis · Control'],
+        appts:[{who:'Ale · María',svc:'Sesión'},{who:'Sam · Diego',svc:'Primera cita'},{who:'Ale · Emily',svc:'Consulta'},{who:'Cris · Dani',tm:'12:30–13:30 · Seguimiento'},{who:'Sam · Carmen',svc:'Sesión larga'}]}
+    };
+    var words=['clientas','pacientes','clientes'],i=0,rot=null;
+    var el=document.getElementById('rotWord');
+    var reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+    function swap(txt){ if(!el)return; if(reduce){el.textContent=txt;return;}
+      el.classList.add('out'); setTimeout(function(){el.textContent=txt;el.classList.remove('out');},260); }
+    function startRot(){ if(!el||reduce)return;
+      rot=setInterval(function(){i=(i+1)%words.length;swap(words[i]);},2200); }
+    window.setGiro=function(key,btn){
+      var t=THEMES[key]; if(!t)return;
+      if(rot){clearInterval(rot);rot=null;}
+      var r=document.documentElement.style;
+      r.setProperty('--rose-deep',t.d); r.setProperty('--rose',t.l); r.setProperty('--rose-soft',t.s);
+      swap(t.w);
+      document.querySelectorAll('.giro-chip').forEach(function(c){c.classList.remove('on');});
+      if(btn)btn.classList.add('on');
+      var c=COPY[key]||{};
+      // 1) Copy con data-g (encabezados, dolores, permisos, planes, CTA…).
+      document.querySelectorAll('[data-g]').forEach(function(node){var v=c[node.dataset.g];if(v!=null)node.innerHTML=v;});
+      // 2) Secciones exclusivas de un giro (testimonio de belleza).
+      document.querySelectorAll('[data-giro-only]').forEach(function(node){node.style.display=(node.dataset.giroOnly===key)?'':'none';});
+      // 3) Chips de equipo del HERO (el recorrido lo maneja su propio motor abajo).
+      if(c.team){document.querySelectorAll('.hero .chips[data-team]').forEach(function(grp){
+        var chips=grp.querySelectorAll('.chip');
+        for(var j=1;j<chips.length;j++){ if(c.team[j-1])chips[j].textContent=c.team[j-1]; }});}
+      // 4) Citas del celular del HERO: servicio, nombre y etiqueta.
+      if(c.appts){document.querySelectorAll('.hero .appt[data-gi]').forEach(function(node){
+        var a=c.appts[+node.dataset.gi]; if(!a)return;
+        var w=node.querySelector('.who'),s=node.querySelector('.svc'),tm=node.querySelector('.tm');
+        if(w&&a.who!=null)w.innerHTML=a.who;
+        if(s&&a.svc!=null)s.textContent=a.svc;
+        if(tm&&a.tm!=null)tm.textContent=a.tm;
+      });}
+      // 5) Barras del coverflow de marca (mismos servicios, distinto color por tarjeta).
+      if(c.bars){document.querySelectorAll('.brandgrid .mbar').forEach(function(el,idx){el.textContent=c.bars[idx%4];});}
+      // 6) Contenido PROFUNDO por giro (recorrido + mockup de registro): motor de tokens.
+      if(window.__giroDeep)window.__giroDeep(key);
+    };
+    startRot();
+  })();
+</script>
+
+<!-- ¿PARA QUIÉN? — multi-giro, arriba para captar desde el inicio -->
+<section id="giros" class="pad" style="background:#fff">
+  <div class="wrap">
+    <div class="center">
+      <div class="eyebrow kicker">No solo para belleza</div>
+      <h2 class="big serif">Si trabajas <em>con cita</em> y tus clientes regresan, Mandarina es para ti.</h2>
+      <p style="max-width:680px;margin:14px auto 0;color:var(--ink-soft);font-size:1.05rem">
+        Un mismo motor —agenda, <b style="color:var(--ink)">anticipos que acaban con el no-show</b>, recordatorios por WhatsApp, expediente y paquetes de sesiones— que <b style="color:var(--ink)">habla el idioma de tu giro</b>.
+      </p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin-top:28px">
+      <div class="bt giro-pick" role="button" tabindex="0" onclick="setGiro('belleza')" onkeydown="if(event.key==='Enter')setGiro('belleza')" style="cursor:pointer"><div class="vi">💄</div><h3>Belleza y estética</h3>
+        <p>Pestañas, uñas, cabello, barbería, spa, depilación, micropigmentación. <b>El giro donde nacimos.</b></p><span class="giro-pick-cta">Ver la app así →</span></div>
+      <div class="bt giro-pick" role="button" tabindex="0" onclick="setGiro('consultorio')" onkeydown="if(event.key==='Enter')setGiro('consultorio')" style="border-color:var(--rose-deep);box-shadow:0 8px 30px rgba(238,122,33,.12);cursor:pointer"><div class="vi">🧠</div><h3>Consultorios y bienestar</h3>
+        <p>Psicología, nutrición, fisio, podología, entrenadores. El <b>anticipo y los recordatorios acaban con el no-show</b>, y los <b>paquetes de sesiones</b> son justo tu modelo.</p><span class="giro-pick-cta">Ver la app así →</span></div>
+      <div class="bt giro-pick" role="button" tabindex="0" onclick="setGiro('dental')" onkeydown="if(event.key==='Enter')setGiro('dental')" style="cursor:pointer"><div class="vi">🦷</div><h3>Consultorio dental</h3>
+        <p>Agenda, confirmaciones, <b>anticipos</b> y recordatorios para que no te dejen citas colgadas. Menos huecos, más tratamientos.</p><span class="giro-pick-cta">Ver la app así →</span></div>
+    </div>
+    <p style="text-align:center;max-width:640px;margin:22px auto 0;color:var(--ink-soft);font-size:.98rem">
+      ¿Otro giro de cita 1 a 1? <b style="color:var(--ink)">También encaja.</b> Eliges tu tipo de negocio al registrarte y la app se adapta sola.
+    </p>
+  </div>
+</section>
+
 <!-- PROBLEMA -->
 <section id="problema" class="dark pad">
   <div class="wrap">
     <div class="center">
-      <div class="eyebrow kicker">El día en tu estudio, hoy</div>
+      <div class="eyebrow kicker" data-g="probEye">El día en tu estudio, hoy</div>
       <h2 class="big serif">Lo llevas en la cabeza, en WhatsApp y en un cuaderno. <em>Y algo siempre se cae.</em></h2>
     </div>
     <div class="pains">
       <div class="pain"><div class="n">01</div><h3>Citas encimadas</h3>
-        <p>Dos clientas a la misma hora con la misma técnica. Te enteras cuando ya llegaron.</p></div>
+        <p data-g="pain1">Dos clientas a la misma hora con la misma técnica. Te enteras cuando ya llegaron.</p></div>
       <div class="pain"><div class="n">02</div><h3>No sabes qué deja más</h3>
         <p>¿Qué servicio te da más dinero? ¿Cuál se cayó este mes? Se siente, pero no se ve.</p></div>
-      <div class="pain"><div class="n">03</div><h3>Clientas que no vuelven</h3>
+      <div class="pain"><div class="n">03</div><h3 data-g="pain3h">Clientas que no vuelven</h3>
         <p>La que venía cada 3 semanas lleva 2 meses sin aparecer y nadie lo notó.</p></div>
       <div class="pain"><div class="n">04</div><h3>Tu asistente ve todo</h3>
         <p>Quien te ayuda a agendar termina viendo teléfonos, cobros y números que no le tocan.</p></div>
@@ -631,9 +791,9 @@
 <section id="marca" class="brandsec pad">
   <div class="wrap">
     <div class="center">
-      <div class="eyebrow kicker">Con la marca de tu estudio</div>
-      <h2 class="big serif">Primero, vístela con el <em>diseño de tu estudio.</em></h2>
-      <p class="sub">Elige la identidad de tu estudio y mira la página entera tomar ese color. El que elijas <b>te acompaña en el recorrido de aquí abajo</b> —así vas a ver tu día a día, ya con tus colores.</p>
+      <div class="eyebrow kicker" data-g="marcaEye">Con la marca de tu estudio</div>
+      <h2 class="big serif" data-g="marcaH2">Primero, vístela con el <em>diseño de tu estudio.</em></h2>
+      <p class="sub" data-g="marcaSub">Elige la identidad de tu estudio y mira la página entera tomar ese color. El que elijas <b>te acompaña en el recorrido de aquí abajo</b> —así vas a ver tu día a día, ya con tus colores.</p>
     </div>
     <div class="brandgrid">
       <div class="bcard" style="--acc:#EE7A21;--acc2:#F79A4D;cursor:pointer" onclick="setBrand('#EE7A21','#F79A4D','#F2B33C')">
@@ -702,7 +862,7 @@
     <div class="tour-copy">
       <div class="eyebrow kicker">Recorrido guiado</div>
       <h2 class="big serif">Así se ve <em>un día completo</em> en Mandarina.</h2>
-      <p class="sub" style="margin-top:14px">Todo esto ya existe y corre en un estudio real. Dale <b>Siguiente</b> y te llevamos paso a paso.</p>
+      <p class="sub" style="margin-top:14px" data-g="tourSub">Todo esto ya existe y corre en un estudio real. Dale <b>Siguiente</b> y te llevamos paso a paso.</p>
     </div>
 
     <div class="tour-phone">
@@ -718,7 +878,7 @@
 
             <!-- AGENDA -->
             <div class="tscreen" id="ts-agenda">
-              <div class="chips"><span class="chip on">Todas</span><span class="chip">Nao</span><span class="chip">Jess</span><span class="chip">Moni</span></div>
+              <div class="chips" data-team><span class="chip on">Todas</span><span class="chip">Nao</span><span class="chip">Jess</span><span class="chip">Moni</span></div>
               <div class="day">
                 <div class="hourrow"><span class="h">9:00</span></div>
                 <div class="hourrow"><span class="h">10:00</span></div>
@@ -727,15 +887,15 @@
                 <div class="hourrow"><span class="h">13:00</span></div>
                 <div class="hourrow"><span class="h">14:00</span></div>
                 <div class="track">
-                  <div class="appt a-blue" style="top:2px;height:74px;left:0;right:0" onclick="openDet()">
+                  <div class="appt a-blue" data-gi="0" style="top:2px;height:74px;left:0;right:0" onclick="openDet()">
                     <div class="who">Jess · Regina</div><div class="svc">Técnica Híbrida</div><div class="tm">9:00–10:30 · Confirmada</div></div>
-                  <div class="appt a-gold" style="top:54px;height:74px;left:16px;right:0;z-index:2" onclick="openDet()">
+                  <div class="appt a-gold" data-gi="1" style="top:54px;height:74px;left:16px;right:0;z-index:2" onclick="openDet()">
                     <div class="who">Nao · Ale</div><div class="svc">Cola de Sirena</div><div class="tm">10:00–11:30</div></div>
-                  <div class="appt a-tang" id="appt-emily" style="top:106px;height:74px;left:34px;right:0;z-index:3" onclick="openDet()">
+                  <div class="appt a-tang" data-gi="2" id="appt-emily" style="top:106px;height:74px;left:34px;right:0;z-index:3" onclick="openDet()">
                     <div class="who">Nao · Emily <span class="cam">📷</span></div><div class="svc">Volumen Ruso</div><div class="tm">11:00–12:30 · toca aquí</div></div>
-                  <div class="appt a-green" style="top:196px;height:44px;left:0;right:0" onclick="openDet()">
+                  <div class="appt a-green" data-gi="3" style="top:196px;height:44px;left:0;right:0" onclick="openDet()">
                     <div class="who">Moni · Dani</div><div class="tm">12:30–13:30 · Retoque</div></div>
-                  <div class="appt a-gold" style="top:250px;height:96px;left:0;right:0" onclick="openDet()">
+                  <div class="appt a-gold" data-gi="4" style="top:250px;height:96px;left:0;right:0" onclick="openDet()">
                     <div class="who">Jess · Carmen</div><div class="svc">Alaciado Semipermanente</div><div class="tm">13:30–15:30</div></div>
                 </div>
               </div>
@@ -826,7 +986,7 @@
             <div class="tscreen" id="ts-reservar" style="display:none">
               <div class="banner">🌐 Tu liga de reservas · <b>tuestudio</b>.usemandarina.com/reservar</div>
               <div class="sect-lbl">La clienta elige servicio</div>
-              <div class="rsvc on"><div><div class="nm">Volumen Ruso</div><div class="meta">1 h 30 min · con quien prefiera</div></div><div class="p">$1,200</div></div>
+              <div class="rsvc on"><div><div class="nm" data-g="rsvcNm">Volumen Ruso</div><div class="meta">1 h 30 min · con quien prefiera</div></div><div class="p">$1,200</div></div>
               <div class="rsvc"><div><div class="nm">Técnica Híbrida</div><div class="meta">1 h 30 min</div></div><div class="p">$950</div></div>
               <div class="sect-lbl">Horario libre · Sáb 4 jul</div>
               <div class="slots">
@@ -862,7 +1022,7 @@
                 </div>
                 <div class="lockpush">
                   <div class="li"><svg class="mfruit"><use href="#mandfruit"/></svg></div>
-                  <div><div class="lb">Mandarina · ahora</div><div class="lt"><b>Nueva reserva online:</b> Emily · Volumen Ruso · hoy 12:00.</div></div>
+                  <div><div class="lb">Mandarina · ahora</div><div class="lt" data-g="rsvcNotif"><b>Nueva reserva online:</b> Emily · Volumen Ruso · hoy 12:00.</div></div>
                 </div>
                 <div class="lockpush">
                   <div class="li"><svg class="mfruit"><use href="#mandfruit"/></svg></div>
@@ -923,21 +1083,22 @@
   <div class="wrap">
     <div class="rs-grid">
       <div class="rs-copy">
-        <div class="eyebrow kicker">Lo nuevo · Captación</div>
-        <h2 class="big serif">Tus clientas <em>agendan solas</em>, de día y de noche.</h2>
-        <p class="sub">Comparte tu liga y deja que reserven sin llamarte ni esperar respuesta. Mandarina solo les muestra los huecos <b>realmente libres</b> y la cita entra sola a tu agenda —y te llega al celular.</p>
+        <div class="eyebrow kicker">Reservas y pagos en línea</div>
+        <h2 class="big serif">Agendan y <em>pagan solas</em>, de día y de noche.</h2>
+        <p class="sub">Comparte tu liga y deja que reserven sin llamarte ni esperar respuesta. Solo ven los huecos <b>realmente libres</b>, la cita entra sola a tu agenda y —si quieres— <b>dejan un anticipo</b> para asegurarla.</p>
         <ul class="rs-list">
-          <li><b>Respeta tu agenda:</b> nunca ofrece un horario ocupado o bloqueado.</li>
-          <li><b>Con tu marca:</b> tu nombre y tus colores en tu propia liga de reservas.</li>
-          <li><b>Te avisa al instante:</b> cada reserva te llega como notificación push a tu app.</li>
+          <li><b>Cobra un anticipo o el total:</b> con tarjeta o transferencia. <b>0% de comisión</b> por reserva.</li>
+          <li><b>Menos no-shows:</b> quien aparta con seña, llega. Y suben su comprobante ahí mismo.</li>
+          <li><b>Tu link para Instagram:</b> una pantalla con tu logo, agendar, ubicación y “ver mi cita” — lista para tu bio.</li>
+          <li><b>Respeta tu agenda</b> y te avisa al instante con notificación push.</li>
         </ul>
         <a class="btn btn-rose" target="_blank" rel="noopener"
-           href="https://wa.me/525545450644?text=Hola%2C%20quiero%20activar%20reservas%20online%20con%20Mandarina">💬 La quiero para mi estudio</a>
+           href="https://wa.me/525545450644?text=Hola%2C%20quiero%20activar%20reservas%20online%20con%20Mandarina">💬 La quiero para mi negocio</a>
       </div>
       <div class="rs-visual">
         <div class="rs-card">
           <div class="rs-url">🌐 <span><b>tuestudio</b>.usemandarina.com/reservar</span></div>
-          <div class="rsvc on"><div><div class="nm">Volumen Ruso</div><div class="meta">1 h 30 min · con quien prefiera</div></div><div class="p">$1,200</div></div>
+          <div class="rsvc on"><div><div class="nm" data-g="rsvcNm">Volumen Ruso</div><div class="meta">1 h 30 min · con quien prefiera</div></div><div class="p">$1,200</div></div>
           <div class="sect-lbl">Horarios libres · Sáb 4 jul</div>
           <div class="slots">
             <span class="slot off">9:00</span><span class="slot">11:30</span><span class="slot on">12:00</span>
@@ -945,7 +1106,7 @@
           </div>
           <div class="lockpush">
             <div class="li"><svg class="mfruit"><use href="#mandfruit"/></svg></div>
-            <div><div class="lb">Mandarina · ahora</div><div class="lt"><b>Nueva reserva online:</b> Emily · Volumen Ruso · hoy 12:00.</div></div>
+            <div><div class="lb">Mandarina · ahora</div><div class="lt" data-g="rsvcNotif"><b>Nueva reserva online:</b> Emily · Volumen Ruso · hoy 12:00.</div></div>
           </div>
         </div>
       </div>
@@ -978,9 +1139,21 @@
       <div class="bt"><div class="vi">💖</div><h3>Reactivar clientas</h3>
         <p>Te dice quién lleva 60+ días sin venir. Un toque y vuelve por WhatsApp.</p>
         <div class="out">→ Recuperas ingresos que ya tenías</div></div>
-      <div class="bt"><div class="vi">🔄</div><h3>Recordatorio de retoque</h3>
-        <p>Sabe cuándo le toca retoque a cada clienta y te lo recuerda.</p>
+      <div class="bt"><div class="vi">🔄</div><h3>Recordatorio de seguimiento</h3>
+        <p>Sabe cuándo le toca volver a cada quien (retoque, control o seguimiento) y te lo recuerda.</p>
         <div class="out">→ Vuelven a tiempo</div></div>
+      <div class="bt"><div class="vi">💳</div><h3>Anticipos y pago en línea</h3>
+        <p>Cobra una seña o el total al reservar —tarjeta o transferencia, 0% de comisión.</p>
+        <div class="out">→ Menos citas que no llegan</div></div>
+      <div class="bt"><div class="vi">🎟️</div><h3>Bonos y paquetes de sesiones</h3>
+        <p>Vende paquetes que se pagan por adelantado y se descuentan solos cada visita.</p>
+        <div class="out">→ Ingreso adelantado y fidelidad</div></div>
+      <div class="bt"><div class="vi">🛍️</div><h3>Productos e inventario</h3>
+        <p>Vende productos y lleva su stock; te avisa cuando algo está por agotarse.</p>
+        <div class="out">→ Otra fuente de ingreso, controlada</div></div>
+      <div class="bt"><div class="vi">👩‍🎨</div><h3>Personal y comisiones</h3>
+        <p>Comisión por persona —hasta distinta por tipo de servicio— y la nómina se calcula sola.</p>
+        <div class="out">→ Pagas justo, sin sacar cuentas</div></div>
       <div class="bt"><div class="vi">📷</div><h3>Fotos antes / después</h3>
         <p>Guarda el antes y el después de cada cita, listo para el retoque.</p>
         <div class="out">→ Retoques exactos y contenido</div></div>
@@ -1011,22 +1184,22 @@
     <div class="perm">
       <div class="pcol admin">
         <div class="role">Dueña · Admin</div>
-        <div class="ph3">👑 Nao / Jess</div>
+        <div class="ph3" data-g="permAdminH">👑 Nao / Jess</div>
         <ul class="plist">
           <li><span class="yes">✓</span> Agenda completa con teléfonos y canal de captación</li>
           <li><span class="yes">✓</span> Cobros, gastos, comisiones y totales del día y del mes</li>
-          <li><span class="yes">✓</span> Números, ranking de servicios y top de clientas por gasto</li>
-          <li><span class="yes">✓</span> Confirmar y reactivar clientas por WhatsApp</li>
+          <li><span class="yes">✓</span> <span data-g="permAdmin1">Números, ranking de servicios y top de clientas por gasto</span></li>
+          <li><span class="yes">✓</span> <span data-g="permAdmin2">Confirmar y reactivar clientas por WhatsApp</span></li>
           <li><span class="yes">✓</span> Alta de personal, servicios y usuarios</li>
         </ul>
       </div>
       <div class="pcol emp">
         <div class="role">Asistente · Empleada</div>
-        <div class="ph3">💫 Moni</div>
+        <div class="ph3" data-g="permEmpH">💫 Moni</div>
         <ul class="plist">
           <li><span class="yes">✓</span> Agenda completa: agenda y edita citas para todo el equipo</li>
-          <li><span class="yes">✓</span> Ve fotos antes/después para preparar el retoque</li>
-          <li><span class="no">✕</span> No ve teléfonos de las clientas</li>
+          <li><span class="yes">✓</span> <span data-g="permEmp1">Ve fotos antes/después para preparar el retoque</span></li>
+          <li><span class="no">✕</span> <span data-g="permEmp2">No ve teléfonos de las clientas</span></li>
           <li><span class="no">✕</span> No ve cobros, totales ni finanzas</li>
           <li><span class="no">✕</span> No entra a gastos, personal ni usuarios</li>
         </ul>
@@ -1035,8 +1208,8 @@
   </div>
 </section>
 
-<!-- ORIGEN -->
-<section class="origin pad">
+<!-- ORIGEN · caso real LasheStar (solo giro belleza) -->
+<section class="origin pad" data-giro-only="belleza">
   <div class="wrap">
     <div>
       <div class="eyebrow kicker">Un caso real</div>
@@ -1209,7 +1382,7 @@
   <div class="wrap">
     <div class="center">
       <div class="eyebrow kicker">Planes</div>
-      <h2 class="big serif">Elige el plan de <em>tu estudio</em>.</h2>
+      <h2 class="big serif" data-g="planesH2">Elige el plan de <em>tu estudio</em>.</h2>
       <p class="sub"><b>7 días gratis</b> en todos · precios con IVA incluido · cancela cuando quieras.</p>
     </div>
     <div class="pricing">
@@ -1271,9 +1444,9 @@
 <!-- CTA -->
 <section id="demo" class="cta pad">
   <div class="wrap">
-    <div class="eyebrow kicker" style="justify-content:center">¿La probamos en tu estudio?</div>
+    <div class="eyebrow kicker" style="justify-content:center" data-g="ctaEye">¿La probamos en tu estudio?</div>
     <h2 class="serif">Conócela en vivo, con <em>tu propia agenda</em>.</h2>
-    <p class="sub">En 15 minutos ves cómo se vería tu día en Mandarina. Si te late, la dejamos lista con el nombre de tu estudio.</p>
+    <p class="sub" data-g="ctaSub">En 15 minutos ves cómo se vería tu día en Mandarina. Si te late, la dejamos lista con el nombre de tu estudio.</p>
     <div class="cta-row">
       <a class="btn btn-rose" href="https://app.usemandarina.com/registro">✨ Empieza tu prueba gratis</a>
       <a class="btn btn-ghost" target="_blank" rel="noopener"
@@ -1286,7 +1459,7 @@
         Síguenos en Instagram · @usemandarinalat
       </a>
     </div>
-    <p class="note" style="margin:24px auto 0;color:#A38C79;text-align:center">Pestañas · uñas · alaciados · cejas · cualquier estudio que viva de la agenda y las clientas que regresan.</p>
+    <p class="note" style="margin:24px auto 0;color:#A38C79;text-align:center">Estudios de belleza · consultorios · terapia · clínicas dentales · cualquier negocio que viva de la agenda y de los clientes que regresan.</p>
   </div>
 </section>
 
@@ -1306,7 +1479,8 @@
         @usemandarinalat
       </a>
     </div>
-    <div class="note">La app de tu estudio · Probada en un estudio real, todos los días · Se personaliza con el nombre y los colores de cada estudio.</div>
+    <div class="note">El sistema de tu negocio de citas · Probado en un negocio real, todos los días · Se personaliza con el nombre, los colores y el giro de cada quien.</div>
+    <div class="note" style="margin-top:10px;opacity:.75">© 2026 Mandarina · Hecho en México 🇲🇽</div>
   </div>
 </footer>
 
@@ -1328,8 +1502,8 @@
       var nb=document.getElementById('nb-'+s); if(nb) nb.classList.toggle('on', s===name);
     });
     var h=HEAD[name]||HEAD.agenda;
-    document.getElementById('ts-title').innerHTML=h.t;
-    document.getElementById('ts-sub').textContent=h.s;
+    document.getElementById('ts-title').innerHTML=giroText(h.t);
+    document.getElementById('ts-sub').textContent=giroText(h.s);
     var sc=document.getElementById('ts-scroll'); if(sc) sc.scrollTop=0;
   }
   function openDet(){ document.getElementById('ts-det').classList.add('open'); }
@@ -1374,8 +1548,8 @@
     if(st.det) openDet(); else closeDet();
     if(st.spot){ var el=document.querySelector(st.spot); if(el) el.classList.add('spot'); }
     document.getElementById('g-count').textContent='Paso '+(i+1)+' de '+TOUR.length;
-    document.getElementById('g-title').textContent=st.t;
-    document.getElementById('g-narr').textContent=st.n;
+    document.getElementById('g-title').textContent=giroText(st.t);
+    document.getElementById('g-narr').textContent=giroText(st.n);
     document.getElementById('g-prev').disabled=(i===0);
     var nx=document.getElementById('g-next');
     nx.textContent=(i===TOUR.length-1)?'Agenda tu demo →':'Siguiente →';
@@ -1462,6 +1636,37 @@
       },{passive:true});
     }
   })();
+  // ===== Motor de contenido PROFUNDO por giro (recorrido + mockups) =====
+  // Reemplaza tokens del texto belleza (baseline) por el vocabulario del giro elegido.
+  var SRC=[
+    ['Alaciado Semipermanente','sA'],['Volumen Ruso','sV'],['Técnica Híbrida','sH'],['Cola de Sirena','sC'],['Mega Volumen','sM'],
+    ['Retoque pestañas','sR'],['Retoque','sR'],['retoques','sRp'],['retoque','sRl'],
+    ['Emily Ramírez','nA'],['Regina Solís','nB'],['Dani Ortega','nC'],['Paulina Vega','nD'],
+    ['Regina','fB'],['Emily','fA'],['Carmen','fE'],['Paulina','fD'],['Dani','fC'],
+    ['Nao','tA'],['Jess','tB'],['Moni','tC'],
+    ['Clientas','plCliCap'],['clientas','plCli'],['clienta','sgCli'],['técnicas','plPer'],['técnica','sgPer'],
+    ['Pestañas','Svc'],['pestañas','svc'],['Alaciado','opt2'],['Uñas','opt3'],
+    ['estudio','neg'],['LasheStar','brand']
+  ];
+  var LEX={
+    consultorio:{sA:'Consulta de control',sV:'Terapia individual',sH:'Primera consulta',sC:'Sesión de pareja',sM:'Terapia de grupo',sR:'Seguimiento',sRp:'seguimientos',sRl:'seguimiento',nA:'María López',nB:'Diego Ruiz',nC:'Luis Pérez',nD:'Ana Torres',fB:'Diego',fA:'María',fE:'Sofía',fD:'Paola',fC:'Luis',tA:'Ana',tB:'Sofía',tC:'Luis',plCliCap:'Pacientes',plCli:'pacientes',sgCli:'paciente',plPer:'especialistas',sgPer:'especialista',Svc:'Terapia',svc:'terapia',opt2:'Nutrición',opt3:'Fisio',neg:'consultorio',brand:'Mente Clara'},
+    dental:{sA:'Blanqueamiento',sV:'Limpieza dental',sH:'Resina',sC:'Extracción',sM:'Ortodoncia',sR:'Revisión',sRp:'revisiones',sRl:'revisión',nA:'María López',nB:'Diego Ruiz',nC:'Luis Pérez',nD:'Ana Torres',fB:'Diego',fA:'María',fE:'Sofía',fD:'Paola',fC:'Luis',tA:'Dr. Álex',tB:'Sofía',tC:'Ana',plCliCap:'Pacientes',plCli:'pacientes',sgCli:'paciente',plPer:'dentistas',sgPer:'dentista',Svc:'Limpieza',svc:'limpieza',opt2:'Resina',opt3:'Ortodoncia',neg:'clínica',brand:'Dental Sonríe'},
+    otro:{sA:'Sesión larga',sV:'Sesión',sH:'Primera cita',sC:'Consulta',sM:'Sesión doble',sR:'Seguimiento',sRp:'seguimientos',sRl:'seguimiento',nA:'María López',nB:'Diego Ruiz',nC:'Luis Pérez',nD:'Ana Torres',fB:'Diego',fA:'María',fE:'Sofía',fD:'Paola',fC:'Luis',tA:'Ale',tB:'Sam',tC:'Cris',plCliCap:'Clientes',plCli:'clientes',sgCli:'cliente',plPer:'profesionales',sgPer:'profesional',Svc:'Servicio',svc:'servicio',opt2:'Consulta',opt3:'Taller',neg:'negocio',brand:'Tu Negocio'}
+  };
+  function buildTok(l){ return SRC.map(function(p){ return [p[0], (l[p[1]]!=null?l[p[1]]:p[0])]; }); }
+  window.TOKENS={ belleza:[], consultorio:buildTok(LEX.consultorio), dental:buildTok(LEX.dental), otro:buildTok(LEX.otro) };
+  window.giroText=function(s){ var g=window.__giro||'belleza',p=window.TOKENS[g]; if(!p||!p.length||s==null)return s;
+    for(var k=0;k<p.length;k++)s=s.split(p[k][0]).join(p[k][1]); return s; };
+  function tokWalk(root){ if(!root)return; var g=window.__giro||'belleza',p=window.TOKENS[g]||[];
+    var w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,null,false),n,nodes=[]; while(n=w.nextNode())nodes.push(n);
+    nodes.forEach(function(tn){ if(tn.__o==null)tn.__o=tn.nodeValue; var t=tn.__o;
+      for(var k=0;k<p.length;k++)t=t.split(p[k][0]).join(p[k][1]); if(t!==tn.nodeValue)tn.nodeValue=t; }); }
+  window.__giroDeep=function(giro){ window.__giro=giro;
+    tokWalk(document.getElementById('ts-scroll'));      // pantallas del recorrido
+    tokWalk(document.getElementById('comofunciona'));   // mockup de registro + reserva
+    if(typeof tourStep==='function')tourStep(cur);       // re-render títulos + narración con giroText
+  };
+
   buildDots(); tourStep(0);
 </script>
 <script>
