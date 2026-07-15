@@ -127,6 +127,26 @@
   .giro-pick{transition:transform .15s ease,box-shadow .2s ease}
   .giro-pick:hover{transform:translateY(-3px);box-shadow:0 14px 34px rgba(58,36,24,.14)}
   .giro-pick-cta{display:inline-block;margin-top:12px;font-weight:700;font-size:.86rem;color:var(--rose-deep)}
+  .giro-pick{display:flex;flex-direction:column}
+  .giro-acts{margin-top:auto;padding-top:14px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+  .ga-go{display:inline-flex;align-items:center;gap:6px;background:var(--rose-deep);color:#fff;font-weight:700;font-size:.84rem;
+    padding:9px 15px;border-radius:999px;text-decoration:none;box-shadow:0 6px 16px rgba(238,122,33,.3)}
+  .ga-go:hover{filter:brightness(1.05)}
+  .ga-ghost{background:transparent;border:1.5px solid var(--rose-deep);color:var(--rose-deep);font-weight:700;font-size:.84rem;
+    padding:8px 14px;border-radius:999px;cursor:pointer}
+  .ga-ghost:hover{background:var(--rose-soft)}
+  .valor-giro{max-width:820px;margin:20px auto 0;background:var(--rose-soft);border:1.5px solid var(--rose);border-radius:16px;padding:15px 18px;text-align:center}
+  .vg-lbl{font-weight:800;color:var(--rose-deep);font-size:.95rem;margin-bottom:10px}
+  .vg-chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+  .vg-chips span{background:#fff;border:1px solid var(--rose);color:var(--ink);font-weight:600;font-size:.82rem;padding:6px 12px;border-radius:999px}
+  .odo-row{display:flex;gap:5px;justify-content:center;margin:4px 0 8px;flex-wrap:wrap}
+  .tooth{width:26px;height:30px;border:1.5px solid #C9BCAE;border-radius:6px 6px 9px 9px;background:#fff;display:flex;align-items:center;justify-content:center;font-size:.66rem;font-weight:700;color:#8a7d6e}
+  .tooth.car{border-color:#E0A21B;background:#FBEFCD;color:#8a6d1e}
+  .tooth.ext{border-color:#D2504F;background:#FBE2E1;color:#9a3a39;text-decoration:line-through}
+  .odo-key{display:flex;gap:16px;justify-content:center;font-size:.72rem;color:var(--ink-soft);margin-bottom:6px}
+  .odo-key i{display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:5px;vertical-align:-1px}
+  .odo-key .k-car{background:#FBEFCD;border:1.5px solid #E0A21B}
+  .odo-key .k-ext{background:#FBE2E1;border:1.5px solid #D2504F}
   .hero-cta{margin-top:30px;display:flex;gap:14px;flex-wrap:wrap}
   .hero-freebie{margin-top:14px;font-size:.9rem;color:#EEDDCD}
   .hero-freebie a{color:#F7A34D;text-decoration:underline;text-underline-offset:2px}
@@ -204,15 +224,15 @@
     color:var(--ink-faint);font-weight:700;margin:14px 2px 8px}
 
   .mini2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-  .donut-card{display:flex;align-items:center;gap:14px;margin-bottom:12px}
-  .donut{width:92px;height:92px;flex:0 0 auto}
+  .donut-card{display:flex;align-items:center;gap:9px;margin-bottom:12px}
+  .donut{width:66px;height:66px;flex:0 0 auto}
   .donut circle{stroke-linecap:round}
-  .donut-leg{flex:1;min-width:0;font-size:.74rem}
-  .donut-leg>div{display:flex;align-items:center;gap:6px;padding:3px 0}
-  .donut-leg span{flex:1;display:flex;align-items:center;gap:6px;color:var(--ink)}
-  .donut-leg i{width:9px;height:9px;border-radius:3px;display:inline-block;flex:0 0 auto}
-  .donut-leg b{font-weight:700;color:var(--ink)}
-  .donut-leg em{font-style:normal;color:var(--ink-soft);min-width:52px;text-align:right}
+  .donut-leg{flex:1;min-width:0;font-size:.7rem}
+  .donut-leg>div{display:flex;align-items:center;gap:4px;padding:2px 0}
+  .donut-leg i{width:8px;height:8px;border-radius:2px;display:inline-block;flex:0 0 auto}
+  .donut-leg .dl{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--ink)}
+  .donut-leg b{font-weight:700;color:var(--ink);flex:0 0 auto}
+  .donut-leg em{font-style:normal;color:var(--ink-soft);flex:0 0 auto;text-align:right;font-size:.66rem}
   .mini{border-radius:13px;padding:10px 11px;color:#fff}
   .mini.g{background:linear-gradient(150deg,#4E9E52,#2E7D32)}
   .mini.b{background:linear-gradient(150deg,#6FB6D8,#4E9BC4)}
@@ -578,15 +598,15 @@
 <header class="hero">
   <div class="wrap">
     <div>
-      <div class="eyebrow">El sistema de tu negocio de citas · estudios · consultorios · terapia · dental</div>
+      <div class="eyebrow">El sistema de tu negocio de citas · belleza · estética · salud · dental</div>
       <h1 class="serif">Tu agenda, tus cobros y tus <span class="rot" id="rotWord">clientas</span> <em>en un solo lugar</em>, desde el celular.</h1>
-      <p class="lede">Nació en un estudio de belleza; hoy es el sistema de cualquier negocio de cita. Lleva tu día completo —agenda, cobros, reservas con anticipo y expediente— y <b>habla el idioma de tu giro.</b></p>
+      <p class="lede">El sistema para cualquier negocio de cita —belleza, estética, consultorio de salud y dental. Lleva tu día completo —agenda, cobros, reservas con anticipo y expediente— y <b>habla el idioma de tu giro.</b></p>
       <div class="hero-giros" role="group" aria-label="Elige tu giro y mira cómo se adapta">
         <span class="hg-label">Elige tu giro →</span>
-        <button type="button" class="giro-chip" onclick="setGiro('belleza',this)">💄 Belleza</button>
-        <button type="button" class="giro-chip" onclick="setGiro('consultorio',this)">🧠 Consultorio</button>
+        <button type="button" class="giro-chip" onclick="setGiro('belleza',this)">💅 Belleza</button>
+        <button type="button" class="giro-chip" onclick="setGiro('estetica',this)">✨ Estética</button>
+        <button type="button" class="giro-chip" onclick="setGiro('consultorio',this)">🩺 Salud</button>
         <button type="button" class="giro-chip" onclick="setGiro('dental',this)">🦷 Dental</button>
-        <button type="button" class="giro-chip" onclick="setGiro('otro',this)">✨ Otro</button>
       </div>
       <div class="hero-cta">
         <a class="btn btn-rose" href="https://app.usemandarina.com/registro">✨ Empieza tu prueba gratis</a>
@@ -650,6 +670,7 @@
       belleza:{d:'#EE7A21',l:'#F79A4D',s:'#FCE8D3',w:'clientas'},
       consultorio:{d:'#2E9E9E',l:'#56C4C4',s:'#DAF0F0',w:'pacientes'},
       dental:{d:'#2E6FA6',l:'#5B93C4',s:'#DCEAF5',w:'pacientes'},
+      estetica:{d:'#C74B8B',l:'#E07CAE',s:'#F8DEEC',w:'clientas'},
       otro:{d:'#7E5BD0',l:'#A084DE',s:'#EAE2F7',w:'clientes'}
     };
     // Copy + contenido de mockups por giro: al elegir giro, el texto que decía "estudio"
@@ -698,6 +719,20 @@
         team:['Dr. Álex','Sofía','Ana'],
         bars:['María · Limpieza','Diego · Resina','Ana · Revisión','Luis · Blanqueo'],
         appts:[{who:'Álex · María',svc:'Limpieza dental'},{who:'Sofía · Diego',svc:'Resina'},{who:'Álex · Emily',svc:'Extracción'},{who:'Ana · Dani',tm:'12:30–13:30 · Revisión'},{who:'Sofía · Carmen',svc:'Blanqueamiento'}]},
+      estetica:{
+        marcaEye:'Con la marca de tu estética',marcaH2:'Primero, vístela con el <em>diseño de tu estética.</em>',marcaSub:msub('estética'),
+        probEye:'El día en tu estética, hoy',
+        pain1:'Dos clientas a la misma hora en la misma cabina. Te enteras cuando ya llegaron.',
+        pain3h:'Clientas que no vuelven',
+        tourSub:'Todo esto ya existe y corre en una estética real. Dale <b>Siguiente</b> y te llevamos paso a paso.',
+        permAdminH:'👑 Dra. Ana',permAdmin1:'Números, ranking de tratamientos y top de clientas por gasto',permAdmin2:'Confirmar y reactivar clientas por WhatsApp',
+        permEmpH:'💫 Recepción',permEmp1:'Ve fotos y medidas para preparar la sesión',permEmp2:'<span class="no">✕</span> No ve teléfonos de las clientas',
+        rsvcNm:'Facial hidratante',rsvcNotif:'<b>Nueva reserva online:</b> María · Facial hidratante · hoy 12:00.',
+        ctaEye:'¿La probamos en tu estética?',ctaSub:'En 15 minutos ves cómo se vería tu día en Mandarina. Si te late, la dejamos lista con el nombre de tu estética.',
+        planesH2:'Elige el plan de <em>tu estética</em>.',
+        team:['Ana','Sofía','Meli'],
+        bars:['María · Facial','Regina · Corporal','Ale · Depilación','Dani · Masaje'],
+        appts:[{who:'Ana · Regina',svc:'Tratamiento corporal'},{who:'Sofía · Diego',svc:'Facial hidratante'},{who:'Ana · Emily <span class="cam">📷</span>',svc:'Radiofrecuencia'},{who:'Meli · Dani',tm:'12:30–13:30 · Depilación'},{who:'Sofía · Carmen',svc:'Masaje reductivo'}]},
       otro:{
         marcaEye:'Con la marca de tu negocio',marcaH2:'Primero, vístela con el <em>diseño de tu negocio.</em>',marcaSub:msub('negocio'),
         probEye:'El día en tu negocio, hoy',
@@ -764,13 +799,35 @@
         Un mismo motor —agenda, <b style="color:var(--ink)">anticipos que acaban con el no-show</b>, recordatorios por WhatsApp, expediente y paquetes de sesiones— que <b style="color:var(--ink)">habla el idioma de tu giro</b>.
       </p>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin-top:28px">
-      <div class="bt giro-pick" role="button" tabindex="0" onclick="setGiro('belleza')" onkeydown="if(event.key==='Enter')setGiro('belleza')" style="cursor:pointer"><div class="vi">💄</div><h3>Belleza y estética</h3>
-        <p>Pestañas, uñas, cabello, barbería, spa, depilación, micropigmentación. <b>El giro donde nacimos.</b></p><span class="giro-pick-cta">Ver la app así →</span></div>
-      <div class="bt giro-pick" role="button" tabindex="0" onclick="setGiro('consultorio')" onkeydown="if(event.key==='Enter')setGiro('consultorio')" style="border-color:var(--rose-deep);box-shadow:0 8px 30px rgba(238,122,33,.12);cursor:pointer"><div class="vi">🧠</div><h3>Consultorios y bienestar</h3>
-        <p>Psicología, nutrición, fisio, podología, entrenadores. El <b>anticipo y los recordatorios acaban con el no-show</b>, y los <b>paquetes de sesiones</b> son justo tu modelo.</p><span class="giro-pick-cta">Ver la app así →</span></div>
-      <div class="bt giro-pick" role="button" tabindex="0" onclick="setGiro('dental')" onkeydown="if(event.key==='Enter')setGiro('dental')" style="cursor:pointer"><div class="vi">🦷</div><h3>Consultorio dental</h3>
-        <p>Agenda, confirmaciones, <b>anticipos</b> y recordatorios para que no te dejen citas colgadas. Menos huecos, más tratamientos.</p><span class="giro-pick-cta">Ver la app así →</span></div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px;margin-top:28px">
+      <div class="bt giro-pick"><div class="vi">💅</div><h3>Belleza</h3>
+        <p>Pestañas, uñas, cabello, barbería, spa, depilación. <b>Tus clientas te traen más clientas:</b> referidos con premio, reseñas a Google en automático, fidelidad y tarjetas de regalo.</p>
+        <div class="giro-acts">
+          <button type="button" class="ga-ghost" onclick="setGiro('belleza');document.getElementById('marca').scrollIntoView({behavior:'smooth'})">Verla en este giro ↓</button>
+          <a class="ga-go" href="https://app.usemandarina.com/belleza">Página de belleza →</a>
+        </div>
+      </div>
+      <div class="bt giro-pick"><div class="vi">✨</div><h3>Estética y spa</h3>
+        <p>Faciales, corporales, depilación, medicina estética. <b>Antes y después, ahora con números:</b> medidas por sesión con su gráfica, fotos fechadas en la ficha y paquetes a plazos.</p>
+        <div class="giro-acts">
+          <button type="button" class="ga-ghost" onclick="setGiro('estetica');document.getElementById('marca').scrollIntoView({behavior:'smooth'})">Verla en este giro ↓</button>
+          <a class="ga-go" href="https://app.usemandarina.com/estetica">Página de estética →</a>
+        </div>
+      </div>
+      <div class="bt giro-pick" style="border-color:var(--rose-deep);box-shadow:0 8px 30px rgba(238,122,33,.12)"><div class="vi">🩺</div><h3>Consultorio de salud</h3>
+        <p>Médico, nutrición, psicología, fisio, podología. <b>El progreso de tu paciente, en una gráfica:</b> nota clínica por visita con firma, recetas digitales y evolución de peso, medidas y signos.</p>
+        <div class="giro-acts">
+          <button type="button" class="ga-ghost" onclick="setGiro('consultorio');document.getElementById('marca').scrollIntoView({behavior:'smooth'})">Verla en este giro ↓</button>
+          <a class="ga-go" href="https://app.usemandarina.com/salud">Página de salud →</a>
+        </div>
+      </div>
+      <div class="bt giro-pick"><div class="vi">🦷</div><h3>Consultorio dental</h3>
+        <p><b>Software dental de verdad, sin el precio de un software dental:</b> odontograma por diente, presupuesto por procedimiento, recetas y expediente (NOM-004) y ortodoncia a plazos.</p>
+        <div class="giro-acts">
+          <button type="button" class="ga-ghost" onclick="setGiro('dental');document.getElementById('marca').scrollIntoView({behavior:'smooth'})">Verla en este giro ↓</button>
+          <a class="ga-go" href="https://app.usemandarina.com/dental">Página dental →</a>
+        </div>
+      </div>
     </div>
     <p style="text-align:center;max-width:640px;margin:22px auto 0;color:var(--ink-soft);font-size:.98rem">
       ¿Otro giro de cita 1 a 1? <b style="color:var(--ink)">También encaja.</b> Eliges tu tipo de negocio al registrarte y la app se adapta sola.
@@ -961,9 +1018,9 @@
                   <text x="50" y="58" text-anchor="middle" font-size="11.5" font-weight="700" fill="#4a3f36">$18,795</text>
                 </svg>
                 <div class="donut-leg">
-                  <div><span><i style="background:#2FA36B"></i>Efectivo</span><b>49%</b><em>$9,280</em></div>
-                  <div><span><i style="background:#7E5BD0"></i>Transferencia</span><b>42%</b><em>$7,875</em></div>
-                  <div><span><i style="background:#C95F85"></i>Tarjeta</span><b>9%</b><em>$1,640</em></div>
+                  <div><i style="background:#2FA36B"></i><span class="dl">Efectivo</span><b>49%</b><em>$9,280</em></div>
+                  <div><i style="background:#7E5BD0"></i><span class="dl">Transferencia</span><b>42%</b><em>$7,875</em></div>
+                  <div><i style="background:#C95F85"></i><span class="dl">Tarjeta</span><b>9%</b><em>$1,640</em></div>
                 </div>
               </div>
               <div class="mini2">
@@ -1038,6 +1095,9 @@
                 <span class="stars">★★★★<span class="off">★</span></span></div></div>
               <div class="hint" style="padding-top:12px">Cada clienta recibe su liga para opinar; el promedio se ve en <b>Números</b>.</div>
             </div>
+
+            <!-- HECHO PARA TU GIRO (contenido dinámico según el giro elegido) -->
+            <div class="tscreen" id="ts-giro" style="display:none"></div>
 
             <!-- APP EN TU CELULAR + PUSH -->
             <div class="tscreen" id="ts-movil" style="display:none">
@@ -1150,6 +1210,7 @@
       <div class="eyebrow kicker">Qué hace por ti</div>
       <h2 class="big serif">Cada función responde a algo que <em>hoy te cuesta tiempo o dinero.</em></h2>
     </div>
+    <div id="valor-giro" class="valor-giro"></div>
     <div class="bento">
       <div class="bt hero"><div class="vi">📅</div><h3>Agenda visual por persona</h3>
         <p>Cada técnica en su columna y su color; las citas que se empalman se escalonan solas.</p>
@@ -1516,7 +1577,7 @@
 </footer>
 
 <script>
-  var screens=['agenda','cobros','clientas','insights','notif','reservar','fideliza','movil'];
+  var screens=['agenda','cobros','clientas','insights','notif','reservar','fideliza','giro','movil'];
   var HEAD={
     agenda:{t:'Hoy <span class="star">✦</span>', s:'Sáb 4 jul · 6 citas · 3 confirmadas'},
     cobros:{t:'Cobros <span class="star">✦</span>', s:'Sáb 4 jul · corte del día'},
@@ -1525,6 +1586,7 @@
     notif:{t:'Novedades <span class="star">✦</span>', s:'Cambios en tus citas'},
     reservar:{t:'Reservas <span class="star">✦</span>', s:'Tu liga pública · en vivo'},
     fideliza:{t:'Fideliza <span class="star">✦</span>', s:'Cumpleaños y opiniones'},
+    giro:{t:'Para tu giro <span class="star">✦</span>', s:'Hecho para tu negocio'},
     movil:{t:'En tu celular <span class="star">✦</span>', s:'App instalable + avisos'}
   };
   function setScreen(name){
@@ -1558,6 +1620,8 @@
      n:'Cada cobro queda guardado con su método de pago. Si es tarjeta, la comisión del 4% de la terminal se registra sola como gasto. Tu caja cuadra al centavo.'},
     {s:'clientas', t:'Reactiva y no pierdas retoques',
      n:'Mandarina te dice a quién le toca retoque esta semana y quién lleva 60+ días sin venir —con botón para traerla por WhatsApp. Recuperas ingresos que ya tenías.'},
+    {s:'giro', t:'Hecho para tu giro',
+     n:'Elige tu giro arriba y esta pantalla cambia: odontograma y presupuestos para dental, expediente y evolución para salud, medidas y antes/después para estética, o crecimiento para belleza.'},
     {s:'fideliza', t:'Cumpleaños y opiniones',
      n:'Mandarina te avisa qué clienta cumple años para felicitarla, y después de cada cita le manda una liga para calificarte con estrellas. Detalles chiquitos que hacen que regrese.'},
     {s:'insights', t:'Sabes qué sube y qué baja',
@@ -1567,6 +1631,66 @@
     {s:'movil', t:'Vive en tu celular',
      n:'Se instala como app: un ícono en tu pantalla, abre a pantalla completa y te manda notificaciones push —una reserva nueva, un cambio de cita— aunque la tengas cerrada. Sin bajar nada de una tienda.'}
   ];
+  // ===== Contenido "hecho para tu giro": pantalla del teléfono + franja de #valor =====
+  window.GIRO_EXTRA={
+    belleza:{ title:'Crece con las que ya tienes',
+      narr:'Referidos con premio, reseñas a Google en automático, fidelidad de sellos y tarjetas de regalo. Llenas tu agenda con las clientas que ya te quieren.',
+      head:{t:'Crecimiento <span class="star">✦</span>', s:'Referidos, reseñas y gift cards'},
+      html:'<div class="banner">🎁 Crece con las clientas que ya tienes</div>'+
+        '<div class="sect-lbl">Referidos con premio</div>'+
+        '<div class="card"><div class="row"><div><div class="nm">Emily trajo a 2 amigas</div><div class="meta">Premio: $150 de saldo a favor</div></div><span class="tag tag-t">Ganó</span></div></div>'+
+        '<div class="sect-lbl">⭐ Reseñas a Google en automático</div>'+
+        '<div class="card"><div class="row"><div><div class="nm">Regina Solís</div><div class="meta">Se le invitó tras su cita</div></div><span class="stars">★★★★★</span></div><div class="money-note" style="background:#FBF0F4;color:#8A4A63">🔗 <span>Su reseña se publicó en tu <b>Google</b></span></div></div>'+
+        '<div class="sect-lbl">🎀 Tarjetas de regalo</div>'+
+        '<div class="card"><div class="row"><div><div class="nm">Gift card · $500</div><div class="meta">Ale se la regaló a Sofía</div></div><span class="tag tag-r">Vendida</span></div></div>'+
+        '<div class="hint">Referidos con premio, reseñas a Google y tarjetas de regalo: llenas tu agenda con lo que ya tienes.</div>' },
+    estetica:{ title:'Resultados que se ven —y se venden',
+      narr:'Medidas por sesión con su gráfica y fotos de antes y después fechadas en la ficha. La evolución vende el siguiente paquete sola, y lo cobras a plazos.',
+      head:{t:'Resultados <span class="star">✦</span>', s:'Medidas, fotos y paquetes'},
+      html:'<div class="banner">✨ Ficha de <b>María López</b> · resultados con números</div>'+
+        '<div class="sect-lbl">📐 Medidas por sesión</div>'+
+        '<div class="card"><div class="row"><div><div class="nm">Cintura</div><div class="meta">Sesión 1 → 4</div></div><div class="amt">88 → 81 cm</div></div><div class="v-chart" style="margin-top:10px"><i style="height:100%"></i><i style="height:86%"></i><i style="height:78%"></i><i style="height:66%"></i></div></div>'+
+        '<div class="sect-lbl">📷 Antes / después</div>'+
+        '<div class="photos"><div class="ph a">Antes</div><div class="ph b">Sesión 4</div></div>'+
+        '<div class="sect-lbl">🎟️ Paquete corporal</div>'+
+        '<div class="card"><div class="row"><div><div class="nm">10 sesiones · Radiofrecuencia</div><div class="meta">6 usadas · 4 restantes</div></div><span class="tag tag-t">A plazos</span></div></div>'+
+        '<div class="hint">Medidas y fotos fechadas + paquetes a plazos: la evolución vende la siguiente sesión sola.</div>' },
+    consultorio:{ title:'El progreso de tu paciente, en una gráfica',
+      narr:'Nota clínica por visita con firma y candado, recetas digitales y la evolución de peso, medidas y signos en una gráfica que tu paciente ve —y por eso regresa.',
+      head:{t:'Expediente <span class="star">✦</span>', s:'Nota, recetas y evolución'},
+      html:'<div class="banner">🩺 Expediente de <b>María López</b></div>'+
+        '<div class="sect-lbl">📈 Evolución de peso · 4 visitas</div>'+
+        '<div class="card"><div class="row"><div><div class="nm">78 → 72 kg</div><div class="meta">−6 kg en 8 semanas</div></div><span class="tag tag-t">Baja</span></div><div class="v-chart" style="margin-top:10px"><i style="height:100%"></i><i style="height:88%"></i><i style="height:78%"></i><i style="height:66%"></i></div></div>'+
+        '<div class="sect-lbl">📝 Nota de la consulta de hoy</div>'+
+        '<div class="card"><div class="row"><div><div class="nm">Control · 14 jul</div><div class="meta">Plan 1,600 kcal · continúa</div></div><span class="tag tag-c">Firmada 🔒</span></div></div>'+
+        '<div class="sect-lbl">💊 Receta</div>'+
+        '<div class="card"><div class="row"><div><div class="nm">Omega 3 · 1,000 mg</div><div class="meta">1 al día con alimentos</div></div><button class="wa" style="margin:0;padding:8px 12px;font-size:.72rem">📱 Enviar</button></div></div>'+
+        '<div class="hint">Nota por visita con firma y candado, recetas digitales y evolución en una gráfica que tu paciente ve.</div>' },
+    dental:{ title:'Software dental de verdad',
+      narr:'Odontograma diente por diente, presupuesto por procedimiento que mandas por WhatsApp, recetas y expediente con firma (NOM-004), y ortodoncia a plazos sin llevar cuentas en papel.',
+      head:{t:'Odontograma <span class="star">✦</span>', s:'Por diente + presupuesto'},
+      html:'<div class="banner">🦷 Odontograma de <b>María López</b></div>'+
+        '<div class="sect-lbl">Marca cada diente y su estado</div>'+
+        '<div class="odo-row"><span class="tooth">17</span><span class="tooth car">16</span><span class="tooth">15</span><span class="tooth">14</span><span class="tooth">13</span><span class="tooth">12</span><span class="tooth">11</span><span class="tooth ext">38</span></div>'+
+        '<div class="odo-key"><span><i class="k-car"></i>Caries</span><span><i class="k-ext"></i>Por extraer</span></div>'+
+        '<div class="sect-lbl">Presupuesto por procedimiento</div>'+
+        '<div class="card"><div class="row"><div><div class="nm">Diente 16 · Resina</div><div class="meta">Caries oclusal</div></div><div class="amt">$900</div></div></div>'+
+        '<div class="card"><div class="row"><div><div class="nm">Diente 38 · Extracción</div><div class="meta">Tercer molar</div></div><div class="amt">$1,500</div></div></div>'+
+        '<div class="card"><div class="row"><div><div class="nm">Total del tratamiento</div><div class="meta">2 procedimientos</div></div><div class="amt">$2,400</div></div><div class="money-note">💳 <span>A plazos: 3 mensualidades de <b>$800</b></span></div></div>'+
+        '<div class="hint">Odontograma por diente, presupuesto por procedimiento, recetas y expediente con firma (NOM-004).</div>' }
+  };
+  window.renderGiro=function(giro){ var gx=window.GIRO_EXTRA[giro]||window.GIRO_EXTRA.belleza;
+    var box=document.getElementById('ts-giro'); if(box) box.innerHTML=gx.html; HEAD.giro=gx.head; };
+  window.VALOR_GIRO={
+    belleza:{lbl:'✦ Para tu estudio de belleza', items:['🎁 Referidos con premio','⭐ Reseñas a Google','🎀 Fidelidad y gift cards','📷 Antes / después']},
+    estetica:{lbl:'✦ Para tu estética o spa', items:['📐 Medidas por sesión','📈 Gráfica de evolución','📷 Fotos fechadas','🎟️ Paquetes a plazos']},
+    consultorio:{lbl:'✦ Para tu consultorio de salud', items:['📝 Nota clínica con firma','💊 Recetas digitales','📈 Evolución de peso y signos','📅 Recordatorios de cita']},
+    dental:{lbl:'✦ Para tu consultorio dental', items:['🦷 Odontograma por diente','📋 Presupuesto por procedimiento','💊 Expediente NOM-004','💳 Ortodoncia a plazos']}
+  };
+  window.renderValorGiro=function(giro){ var v=window.VALOR_GIRO[giro]||window.VALOR_GIRO.belleza;
+    var box=document.getElementById('valor-giro'); if(!box)return;
+    box.innerHTML='<div class="vg-lbl">'+v.lbl+'</div><div class="vg-chips">'+v.items.map(function(x){return '<span>'+x+'</span>';}).join('')+'</div>'; };
+
   var cur=0;
   function buildDots(){
     var d=document.getElementById('g-dots'); d.innerHTML='';
@@ -1579,8 +1703,10 @@
     if(st.det) openDet(); else closeDet();
     if(st.spot){ var el=document.querySelector(st.spot); if(el) el.classList.add('spot'); }
     document.getElementById('g-count').textContent='Paso '+(i+1)+' de '+TOUR.length;
-    document.getElementById('g-title').textContent=giroText(st.t);
-    document.getElementById('g-narr').textContent=giroText(st.n);
+    var _t=st.t,_n=st.n;
+    if(st.s==='giro'){ var gx=(window.GIRO_EXTRA&&(window.GIRO_EXTRA[window.__giro||'belleza']||window.GIRO_EXTRA.belleza)); if(gx){ _t=gx.title; _n=gx.narr; } }
+    document.getElementById('g-title').textContent=giroText(_t);
+    document.getElementById('g-narr').textContent=giroText(_n);
     document.getElementById('g-prev').disabled=(i===0);
     var nx=document.getElementById('g-next');
     nx.textContent=(i===TOUR.length-1)?'Agenda tu demo →':'Siguiente →';
@@ -1682,10 +1808,11 @@
   var LEX={
     consultorio:{sA:'Consulta de control',sV:'Terapia individual',sH:'Primera consulta',sC:'Sesión de pareja',sM:'Terapia de grupo',sR:'Seguimiento',sRp:'seguimientos',sRl:'seguimiento',nA:'María López',nB:'Diego Ruiz',nC:'Luis Pérez',nD:'Ana Torres',fB:'Diego',fA:'María',fE:'Sofía',fD:'Paola',fC:'Luis',tA:'Ana',tB:'Sofía',tC:'Luis',plCliCap:'Pacientes',plCli:'pacientes',sgCli:'paciente',plPer:'especialistas',sgPer:'especialista',Svc:'Terapia',svc:'terapia',opt2:'Nutrición',opt3:'Fisio',neg:'consultorio',brand:'Mente Clara'},
     dental:{sA:'Blanqueamiento',sV:'Limpieza dental',sH:'Resina',sC:'Extracción',sM:'Ortodoncia',sR:'Revisión',sRp:'revisiones',sRl:'revisión',nA:'María López',nB:'Diego Ruiz',nC:'Luis Pérez',nD:'Ana Torres',fB:'Diego',fA:'María',fE:'Sofía',fD:'Paola',fC:'Luis',tA:'Dr. Álex',tB:'Sofía',tC:'Ana',plCliCap:'Pacientes',plCli:'pacientes',sgCli:'paciente',plPer:'dentistas',sgPer:'dentista',Svc:'Limpieza',svc:'limpieza',opt2:'Resina',opt3:'Ortodoncia',neg:'clínica',brand:'Dental Sonríe'},
+    estetica:{sA:'Masaje reductivo',sV:'Facial hidratante',sH:'Radiofrecuencia',sC:'Tratamiento corporal',sM:'Paquete corporal',sR:'Sesión de seguimiento',sRp:'seguimientos',sRl:'seguimiento',nA:'María López',nB:'Regina Díaz',nC:'Dani Ortega',nD:'Ana Torres',fB:'Regina',fA:'María',fE:'Carmen',fD:'Paola',fC:'Dani',tA:'Ana',tB:'Sofía',tC:'Meli',plCliCap:'Clientas',plCli:'clientas',sgCli:'clienta',plPer:'especialistas',sgPer:'especialista',Svc:'Facial',svc:'facial',opt2:'Corporal',opt3:'Depilación',neg:'estética',brand:'Glow Studio'},
     otro:{sA:'Sesión larga',sV:'Sesión',sH:'Primera cita',sC:'Consulta',sM:'Sesión doble',sR:'Seguimiento',sRp:'seguimientos',sRl:'seguimiento',nA:'María López',nB:'Diego Ruiz',nC:'Luis Pérez',nD:'Ana Torres',fB:'Diego',fA:'María',fE:'Sofía',fD:'Paola',fC:'Luis',tA:'Ale',tB:'Sam',tC:'Cris',plCliCap:'Clientes',plCli:'clientes',sgCli:'cliente',plPer:'profesionales',sgPer:'profesional',Svc:'Servicio',svc:'servicio',opt2:'Consulta',opt3:'Taller',neg:'negocio',brand:'Tu Negocio'}
   };
   function buildTok(l){ return SRC.map(function(p){ return [p[0], (l[p[1]]!=null?l[p[1]]:p[0])]; }); }
-  window.TOKENS={ belleza:[], consultorio:buildTok(LEX.consultorio), dental:buildTok(LEX.dental), otro:buildTok(LEX.otro) };
+  window.TOKENS={ belleza:[], consultorio:buildTok(LEX.consultorio), dental:buildTok(LEX.dental), estetica:buildTok(LEX.estetica), otro:buildTok(LEX.otro) };
   window.giroText=function(s){ var g=window.__giro||'belleza',p=window.TOKENS[g]; if(!p||!p.length||s==null)return s;
     for(var k=0;k<p.length;k++)s=s.split(p[k][0]).join(p[k][1]); return s; };
   function tokWalk(root){ if(!root)return; var g=window.__giro||'belleza',p=window.TOKENS[g]||[];
@@ -1696,9 +1823,13 @@
     tokWalk(document.getElementById('ts-screen'));      // TODO el teléfono del recorrido (incluye detalle + bottom-nav)
     tokWalk(document.getElementById('comofunciona'));   // mockup de registro + reserva
     tokWalk(document.getElementById('valor'));          // "Cada función responde…" (tarjetas + mini-mockups)
+    if(typeof renderGiro==='function')renderGiro(giro);        // pantalla "hecho para tu giro" (después del tokWalk)
+    if(typeof renderValorGiro==='function')renderValorGiro(giro); // franja destacada por giro en #valor
     if(typeof tourStep==='function')tourStep(cur);       // re-render títulos + narración con giroText
   };
 
+  if(typeof renderGiro==='function')renderGiro('belleza');
+  if(typeof renderValorGiro==='function')renderValorGiro('belleza');
   buildDots(); tourStep(0);
 </script>
 <script>
